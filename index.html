@@ -922,7 +922,7 @@ html, body {
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Windows_Settings_icon.svg/960px-Windows_Settings_icon.svg.png" alt="settings">
     </div>
     <!-- browser -->
-    <div class="taskbar-icon" onclick="openApp('Edge', 'edge.html')" onmouseenter="showTooltip(this, 'Edge')">
+    <div class="taskbar-icon" onclick="openApp('Edge', 'https://bluetidestack.github.io/flowbrowser/index.html ')" onmouseenter="showTooltip(this, 'Edge')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Microsoft_Edge_logo_%282019%29.png" alt="Edge">
     </div>
     <!-- terminal -->
@@ -938,7 +938,7 @@ html, body {
       <img src="https://i.imgur.com/wP962mX.png" alt="Help">
     </div>
     <!-- syntaxpad -->
-    <div class="taskbar-icon" onclick="openApp('Syntaxpad', 'https://selenitebyplayer.artmuseum.org/resources/sppa/code/index.html')" onmouseenter="showTooltip(this, 'Syntaxpad')">
+    <div class="taskbar-icon" onclick="openApp('Syntaxpad', 'https://bluetidestack.github.io/ht.mlfork/index.html ')" onmouseenter="showTooltip(this, 'Syntaxpad')">
       <img src="https://i.imgur.com/GnJAVTq.png" alt="syntaxpad">
     </div>
     <!-- calc -->
@@ -1034,6 +1034,7 @@ const storeApps = savedStoreData ? JSON.parse(savedStoreData) : {
       { name: "Duck Life 3", url: "https://selenitebyplayer.artmuseum.org/resources/semag/ducklife3/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3em2qQpj_DxFl1HeNIZn8B-8mujTR59SFHQ&s" },
       { name: "Cluster Rush", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/clusterrush.html", image: "https://gguardian213213.axsetubal.pt/images/games/cluster-min.png" },
       { name: "Escape Road", url: "https://redtide-stack.github.io/zeroOS-assets/escroad.html", image: "https://escaperoad.io/cache/data/image/game/escape-road-game-sr1-f240x240.webp" },
+      { name: "Escape Road 2", url: "https://bluetidestack.github.io/escape-road-2/index.html", image: "https://escaperoad2d.io/data/image/game/escape-road-2-cover.png" },
       { name: "Minecraft Launcher", url: "https://eaglercraft.q13x.com/1.12.2/wasm/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHDDzMFbYR5tfpoSCpqt_iltsGj5kzFTX5ew&s" },
       { name: "Crazy Cattle 3D", url: "https://zxsgames.vip/g/crazycattle.html", image: "https://img.itch.zone/aW1nLzIwNzkwNDg0LnBuZw==/315x250%23c/O5flR4.png" },
       { name: "Geometry Dash Lite", url: "https://script.google.com/a/macros/ogsd.net/s/AKfycbydNb9Y8FIM3D0vcweKtYCYbjJcSXghedO6MN0aWbP5qIwamjjSkBDirvuMHR_6sc4/exec", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBms9b8YIAtSUbezumxG-dUppHEplVXpAlnA&s", },
@@ -1063,7 +1064,8 @@ const storeApps = savedStoreData ? JSON.parse(savedStoreData) : {
     ],
     apps: [
       { name: "Browser", url: "https://redtide-stack.github.io/zeroOS-assets/p.html", image: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Microsoft_Edge_logo_%282019%29.png" },
-      { name: "Virtual Machine", url: "https://redtide-stack.github.io/zeroOS-assets/vm.html", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Circle-icons-computer.svg/960px-Circle-icons-computer.svg.png" },
+      { name: "Virtual Machine", url: "https://bluetidestack.github.io/retrobowl/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp5-tU4xfhZG_QzRYovCMHw14ZEG9t2tPs7g&s" },
+      { name: "Virtual Machine (Worse)", url: "https://redtide-stack.github.io/zeroOS-assets/vm.html", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Circle-icons-computer.svg/960px-Circle-icons-computer.svg.png" },
       { name: "Windows 11 in React", url: "https://win11.blueedge.me/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL5JHjCwohEDVmMh5-SZ9wfCg-970803ZbKg&s" },
       { name: "Android Phone", url: "https://appetize.io/embed/xc1w6f1krd589zhp22a0mgftyw?autoplay=false&debug=true&device=pixel4&embed=true&launchUrl=exp%3A%2F%2Fexp.host%2F%40snack%2Fsdk.46.0.0-ghV0%21Qgb8N&scale=65&screenOnly=false&xDocMsg=true&xdocMsg=true&params=%7B&osVersion=11.0&deviceColor=black", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/960px-Android_robot.svg.png" },
       { name: "Soundboard", url: "https://myinstants.com", image: "https://play-lh.googleusercontent.com/v_5LsSgLe8lMcmmKc1uYMPkaOkM3JVVkl_IvQ8m9iim5Z8Pw80MgvMyA_zc2QvVs6zA" },
@@ -1074,7 +1076,7 @@ const storeApps = savedStoreData ? JSON.parse(savedStoreData) : {
       { name: "Notepad", url: "https://justnotepad.com", image: "https://blogs.windows.com/wp-content/uploads/prod/sites/44/2021/12/Win-Notepad.png" },
     ],
     devtools: [
-      { name: "Syntaxpad", url: "https://selenitebyplayer.artmuseum.org/resources/sppa/code/index.html", image: "https://i.imgur.com/bdty4lT.png" },
+      { name: "Syntaxpad", url: "https://bluetidestack.github.io/ht.mlfork/index.html ", image: "https://i.imgur.com/bdty4lT.png" },
       { name: "Color Picker", url: "https://pickcoloronline.com/", image: "https://cdn-icons-png.freepik.com/256/4436/4436882.png?semt=ais_white_label" },
       { name: "JSON Formatter", url: "https://jsonformatter.org", image: "https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/file-json-color-green-icon.png" },
       { name: "JS Obfuscator", url: "https://js-obfuscator.github.io/", image: "https://i.imgur.com/9bMcQ0N.png" }, // plz vro i swer im not e skid
