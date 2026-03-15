@@ -29,7 +29,7 @@ html, body {
 #desktop {
   width: 100%;
   height: 100%;
-  background: url("https://i.imgur.com/Jiefjwl.jpeg") center/cover no-repeat;
+  background: url("https://static.vecteezy.com/system/resources/previews/005/732/454/non_2x/night-in-coniferous-forest-with-mountain-rising-moon-and-stars-vector.jpg") center/cover no-repeat;
   position: relative;
 
   display: flex;
@@ -917,12 +917,16 @@ html, body {
     <div class="taskbar-icon" id="start-button" onclick="toggleStartMenu(event)" onmouseenter="showTooltip(this, 'Start')">
       <img src="https://preview.redd.it/sudz5o3s1vn91.png?width=1080&format=png&auto=webp&s=27107d9d26f3b82ee00f53becd873b7bef881744">
     </div>
+    <!-- search -->
+    <div class="taskbar-icon" id="taskbar-search-icon" onclick="toggleSearchMenu(event)">
+      <img src="https://i.imgur.com/2DDJj2G.png">
+    </div>
     <!-- settings -->
     <div class="taskbar-icon" onclick="openSettings()" onmouseenter="showTooltip(this, 'Settings')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Windows_Settings_icon.svg/960px-Windows_Settings_icon.svg.png" alt="settings">
     </div>
     <!-- browser -->
-    <div class="taskbar-icon" onclick="openApp('Edge', 'https://bluetidestack.github.io/flowbrowser/index.html ')" onmouseenter="showTooltip(this, 'Edge')">
+    <div class="taskbar-icon" onclick="openApp('Edge', 'https://bluetidestack.github.io/flowbrowser/index.html')" onmouseenter="showTooltip(this, 'Edge')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Microsoft_Edge_logo_%282019%29.png" alt="Edge">
     </div>
     <!-- terminal -->
@@ -933,13 +937,9 @@ html, body {
     <div class="taskbar-icon" onclick="openApp('Chatroom', 'https://redtide-stack.github.io/zeroOS-assets/chat.html')" onmouseenter="showTooltip(this, 'Chatroom')">
       <img src="https://static.vecteezy.com/system/resources/thumbnails/008/508/754/small/3d-chat-mail-message-notification-chatting-illustration-png.png" alt="chatroom">
     </div>
-    <!-- help -->
-    <div class="taskbar-icon" onclick="openApp('Help', 'https://redtide-stack.github.io/zeroOS-assets/help.html')" onmouseenter="showTooltip(this, 'Help')">
-      <img src="https://i.imgur.com/wP962mX.png" alt="Help">
-    </div>
-    <!-- syntaxpad -->
-    <div class="taskbar-icon" onclick="openApp('Syntaxpad', 'https://bluetidestack.github.io/ht.mlfork/index.html ')" onmouseenter="showTooltip(this, 'Syntaxpad')">
-      <img src="https://i.imgur.com/GnJAVTq.png" alt="syntaxpad">
+    <!-- vscode -->
+     <div class="taskbar-icon" onclick="openApp('Visual Studio Code', 'https://bluetidestack.github.io/ht.mlfork/index.html')" onmouseenter="showTooltip(this, 'VS Code')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/960px-Visual_Studio_Code_1.35_icon.svg.png" alt="VS Code">
     </div>
     <!-- calc -->
     <div class="taskbar-icon" onclick="openApp('Calculator', 'https://desmos.com/scientific')" onmouseenter="showTooltip(this, 'Calculator')">
@@ -992,6 +992,24 @@ const savedStoreData = localStorage.getItem("zeroOS_custom_store");
 
 let snapTimer = null;
 
+// this scary looking function takes care of searching for start menu and search menu
+const renderApps = (apps, container) => {
+    container.innerHTML = "";
+    if (apps.length === 0) {
+        container.innerHTML = `<p style="color: #888; font-size: 13px; text-align: center; margin-top: 20px;">No results found</p>`;
+        return;
+    }
+    apps.forEach(app => {
+        const item = document.createElement("div");
+        item.style = "text-align: center; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; padding: 10px 5px; border-radius: 6px; display: flex; flex-direction: column; align-items: center; transition: background 0.2s;";
+        item.onmouseover = () => item.style.background = "rgba(255,255,255,0.1)";
+        item.onmouseout = () => item.style.background = "transparent";
+        item.onclick = () => { openApp(app.name, app.url); document.getElementById("search-menu")?.remove(); };
+        item.innerHTML = `<img src="${app.image}" style="width: 32px; height: 32px; margin-bottom: 8px;"><span style="font-size: 11px;">${app.name}</span>`;
+        container.appendChild(item);
+    });
+};
+
 
 (function loadUserCustomizations() {
     const desktop = document.getElementById('desktop');
@@ -1033,6 +1051,7 @@ const storeApps = savedStoreData ? JSON.parse(savedStoreData) : {
       { name: "Super Tunnel Rush", url: "https://23azostore.github.io/s3/super-tunnel-rush", image: "https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=314,height=314,fit=cover,f=auto/58fe1e7371ce50318e3c31024b561209/super-tunnel-rush.png" },
       { name: "Duck Life 3", url: "https://selenitebyplayer.artmuseum.org/resources/semag/ducklife3/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3em2qQpj_DxFl1HeNIZn8B-8mujTR59SFHQ&s" },
       { name: "Cluster Rush", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/clusterrush.html", image: "https://gguardian213213.axsetubal.pt/images/games/cluster-min.png" },
+      { name: "Gameing", url: "https://windows96.net/system/apps/gameing/", image: "https://i.imgur.com/geqTaWH.png" },
       { name: "Escape Road", url: "https://redtide-stack.github.io/zeroOS-assets/escroad.html", image: "https://escaperoad.io/cache/data/image/game/escape-road-game-sr1-f240x240.webp" },
       { name: "Escape Road 2", url: "https://bluetidestack.github.io/escape-road-2/index.html", image: "https://escaperoad2d.io/data/image/game/escape-road-2-cover.png" },
       { name: "Minecraft Launcher", url: "https://eaglercraft.q13x.com/1.12.2/wasm/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHDDzMFbYR5tfpoSCpqt_iltsGj5kzFTX5ew&s" },
@@ -1063,9 +1082,8 @@ const storeApps = savedStoreData ? JSON.parse(savedStoreData) : {
       { name: "Tiny Fishing", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/tinyfishing.html", image: "https://gguardian213213.axsetubal.pt/images/games/tinyfish-min.png" },
     ],
     apps: [
-      { name: "Browser", url: "https://redtide-stack.github.io/zeroOS-assets/p.html", image: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Microsoft_Edge_logo_%282019%29.png" },
-      { name: "Virtual Machine", url: "https://bluetidestack.github.io/retrobowl/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp5-tU4xfhZG_QzRYovCMHw14ZEG9t2tPs7g&s" },
-      { name: "Virtual Machine (Worse)", url: "https://redtide-stack.github.io/zeroOS-assets/vm.html", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Circle-icons-computer.svg/960px-Circle-icons-computer.svg.png" },
+      { name: "Browser", url: "https://bluetidestack.github.io/flowbrowser/index.html", image: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Microsoft_Edge_logo_%282019%29.png" },
+      { name: "Virtual Machine", url: "https://redtide-stack.github.io/zeroOS-assets/vm.html", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Circle-icons-computer.svg/960px-Circle-icons-computer.svg.png" },
       { name: "Windows 11 in React", url: "https://win11.blueedge.me/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL5JHjCwohEDVmMh5-SZ9wfCg-970803ZbKg&s" },
       { name: "Android Phone", url: "https://appetize.io/embed/xc1w6f1krd589zhp22a0mgftyw?autoplay=false&debug=true&device=pixel4&embed=true&launchUrl=exp%3A%2F%2Fexp.host%2F%40snack%2Fsdk.46.0.0-ghV0%21Qgb8N&scale=65&screenOnly=false&xDocMsg=true&xdocMsg=true&params=%7B&osVersion=11.0&deviceColor=black", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/960px-Android_robot.svg.png" },
       { name: "Soundboard", url: "https://myinstants.com", image: "https://play-lh.googleusercontent.com/v_5LsSgLe8lMcmmKc1uYMPkaOkM3JVVkl_IvQ8m9iim5Z8Pw80MgvMyA_zc2QvVs6zA" },
@@ -1076,7 +1094,7 @@ const storeApps = savedStoreData ? JSON.parse(savedStoreData) : {
       { name: "Notepad", url: "https://justnotepad.com", image: "https://blogs.windows.com/wp-content/uploads/prod/sites/44/2021/12/Win-Notepad.png" },
     ],
     devtools: [
-      { name: "Syntaxpad", url: "https://bluetidestack.github.io/ht.mlfork/index.html ", image: "https://i.imgur.com/bdty4lT.png" },
+      { name: "Visual Studio Code", url: "https://bluetidestack.github.io/ht.mlfork/index.html", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/960px-Visual_Studio_Code_1.35_icon.svg.png" },
       { name: "Color Picker", url: "https://pickcoloronline.com/", image: "https://cdn-icons-png.freepik.com/256/4436/4436882.png?semt=ais_white_label" },
       { name: "JSON Formatter", url: "https://jsonformatter.org", image: "https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/file-json-color-green-icon.png" },
       { name: "JS Obfuscator", url: "https://js-obfuscator.github.io/", image: "https://i.imgur.com/9bMcQ0N.png" }, // plz vro i swer im not e skid
@@ -1182,52 +1200,41 @@ menu.style = `
 
   renderApps(pinnedApps, document.getElementById("pinned-grid"));
 
-    // Render Pinned Apps
   renderApps(pinnedApps, document.getElementById("pinned-grid"));
 
-  // NEW: Render Recommended Apps (Showing 6 random apps from your store)
-    // 1. Get all available apps
   const allApps = [...storeApps.games, ...storeApps.apps];
 
-  // 2. Filter out the static apps from the random pool (so they don't show twice)
   const randomPool = allApps.filter(app => 
     !staticRecommended.find(staticApp => staticApp.name === app.name)
   );
 
-  // 3. Pick 4 random apps to fill the remaining slots (Total 6: 2 static + 4 random)
   const randomApps = randomPool.sort(() => 0.5 - Math.random()).slice(0, 4);
   
-  // 4. Combine them
   const finalRecommended = [...staticRecommended, ...randomApps];
   
   const recContainer = document.getElementById("recommended-list");
-  recContainer.innerHTML = ""; // Clear it first
+  recContainer.innerHTML = ""; 
 
 finalRecommended.forEach(app => {
     const recItem = document.createElement("div");
     
-    // 1. Determine the subtext based on the app name
     let subtext = "Recently added";
         
-        // Check for specific popular games FIRST
     if (app.name === "PolyTrack") { 
         subtext = "Popular";
     } 
-    // Then check if it's a generic static app
     else if (staticRecommended.some(s => s.name === app.name)) {
         subtext = "Most Used";
     } 
-    // Otherwise, it's just a normal app
     else {
         subtext = "Recently added";
     }
 
 
-    // 2. Apply a special style if it's the "Popular" one (optional)
     const isPopular = subtext === "Popular";
     const popularGlow = isPopular ? "background: rgba(255, 215, 0, 0.05);" : "";
 
-    recItem.style = `display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: 6px; cursor: pointer; ${popularGlow}`;
+    recItem.style = `display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: 6px; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; ${popularGlow}`;
     
     recItem.style = "display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: 6px; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; transition: background 0.2s;";
     recItem.onmouseover = () => recItem.style.background = "rgba(255,255,255,0.05)";
@@ -1246,7 +1253,6 @@ finalRecommended.forEach(app => {
 
 
 
-
     const searchInput = document.getElementById("start-search");
   const mainContent = document.getElementById("main-content");
   const resultsContainer = document.getElementById("search-results");
@@ -1255,14 +1261,12 @@ finalRecommended.forEach(app => {
     const query = e.target.value.toLowerCase().trim();
     
     if (query.length > 0) {
-      // Show search, hide everything else
       mainContent.style.display = "none";
       resultsContainer.style.display = "grid";
       
       const allAppsList = [...storeApps.games, ...storeApps.apps, ...storeApps.devtools];
       renderApps(allAppsList.filter(a => a.name.toLowerCase().includes(query)), resultsContainer);
     } else {
-      // Hide search, show everything else (Pinned + Recommended)
       mainContent.style.display = "block";
       resultsContainer.style.display = "none";
     }
@@ -1281,7 +1285,7 @@ finalRecommended.forEach(app => {
 }
 
 window.addEventListener('keydown', (e) => {
-    if (e.key === "Meta" || e.key === "Escape") { // Meta is the Windows/Command key
+    if (e.key === "Meta" || e.key === "Escape") { 
         e.preventDefault();
         toggleStartMenu();
     }
@@ -1417,6 +1421,153 @@ window.addEventListener('beforeunload', function (event) {
     desktop.appendChild(icon);
   });
 }
+
+// =================================
+//    SEARCHING (taskbar)
+// ============================ //
+
+function handleUniversalSearch(query, resultsContainer, mainContentArea) {
+    if (query.length > 0) {
+        if (mainContentArea) mainContentArea.style.display = "none";
+        resultsContainer.style.display = "grid";
+        
+        const allAppsList = [...storeApps.games, ...storeApps.apps, ...storeApps.devtools];
+        const filtered = allAppsList.filter(a => a.name.toLowerCase().includes(query));
+        renderApps(filtered, resultsContainer);
+    } else {
+        if (mainContentArea) mainContentArea.style.display = "block";
+        resultsContainer.style.display = "none";
+    }
+}
+function toggleSearchMenu(event) {
+    if (event) event.stopPropagation();
+    document.getElementById("start-menu")?.remove();
+
+    const existingMenu = document.getElementById("search-menu");
+    if (existingMenu) { existingMenu.remove(); return; }
+
+    const menu = document.createElement("div");
+    menu.id = "search-menu";
+    menu.style = `
+        position: absolute; bottom: 65px; left: 50%; transform: translateX(-50%);
+        width: 520px; height: 480px; 
+        background: rgba(30, 30, 30, 0.6);
+        backdrop-filter: blur(40px) saturate(180%); 
+        -webkit-backdrop-filter: blur(40px) saturate(180%);
+        border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; z-index: 10000;
+        padding: 25px; display: flex; flex-direction: column; color: white;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    `;
+
+    menu.innerHTML = `
+        <div style="position: relative; margin-bottom: 20px;">
+            <ion-icon name="search-outline" style="position: absolute; left: 12px; top: 12px; color: #aaa;"></ion-icon>
+            <input type="text" id="uni-search" autofocus placeholder="Type here to search" 
+                style="width: 100%; padding: 10px 15px 10px 40px; border-radius: 8px; border: none; background: rgba(255,255,255,0.1); color: white; outline: none; border-bottom: 2px solid #0078d4;">
+        </div>
+
+        <div id="menu-content-area" style="flex: 1; overflow-y: auto; padding-right: 5px;">
+            <div id="uni-results" style="display: none; grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); gap: 10px;"></div>
+
+            <div id="search-default-content">
+                <span style="font-weight: 600; font-size: 13px; color: #eee; display: block; margin-bottom: 15px;">Top apps</span>
+                <div id="top-apps-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 30px;"></div>
+                
+                <span style="font-weight: 600; font-size: 13px; color: #eee; display: block; margin-bottom: 15px;">Quick Searches</span>
+                <div id="quick-searches-list" style="display: flex; flex-direction: column; gap: 4px;"></div>
+            </div>
+        </div>
+    `;
+
+
+    document.body.appendChild(menu);
+    setupSearchLogic();
+}
+
+function setupSearchLogic() {
+    const input = document.getElementById("uni-search");
+    const resultsGrid = document.getElementById("uni-results");
+    const defaultContent = document.getElementById("search-default-content");
+    const topAppsGrid = document.getElementById("top-apps-grid");
+
+    const topApps = [
+    { name: "All Games", url: "https://redtide-stack.github.io/zeroOS-assets/moregames.html", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
+    { name: "PolyTrack", url: "https://gaming-escape.github.io/public/assets/games/poly-track/index.html", image: "https://gguardian213213.axsetubal.pt/images/games/polytrack-min.jpg" },
+    { name: "Drive Mad", url: "https://www.swordslasher.com/games/drive-mad/game.html", image: "https://azgames.io/upload/imgs/drivemad.png" },
+    { name: "VS Code", url: "https://bluetidestack.github.io/ht.mlfork/index.html", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/960px-Visual_Studio_Code_1.35_icon.svg.png" },
+    { name: "Browser", url: "https://bluetidestack.github.io/flowbrowser/index.html", image: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Microsoft_Edge_logo_%282019%29.png" },
+];
+
+    const quickSearches = [
+        { name: "Today in history", icon: "time-outline" },
+        { name: "Markets today", icon: "trending-up-outline" },
+        { name: "New movies", icon: "film-outline" },
+        { name: "Top news", icon: "newspaper-outline" }
+    ];
+
+    const quickList = document.getElementById('quick-searches-list');
+    if (quickList) {
+        quickSearches.forEach(item => {
+            const row = document.createElement('div');
+            row.style = "display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 6px; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; transition: 0.2s;";
+            row.onmouseover = () => row.style.background = "rgba(255,255,255,0.1)";
+            row.onmouseout = () => row.style.background = "transparent";
+            
+            row.innerHTML = `
+                <ion-icon name="${item.icon}" style="font-size: 18px; color: #0078d4;"></ion-icon>
+                <span style="font-size: 13px; color: #eee;">${item.name}</span>
+            `;
+            quickList.appendChild(row);
+        });
+    }
+
+    topApps.forEach(app => {
+    const card = document.createElement("div");
+    card.style = "background: rgba(255,255,255,0.05); padding: 15px 5px; border-radius: 8px; text-align: center; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; transition: 0.2s;";
+    
+    card.onmouseover = () => card.style.background = "rgba(255,255,255,0.1)";
+    card.onmouseout = () => card.style.background = "rgba(255,255,255,0.05)";
+
+     card.onclick = () => {
+        openApp(app.name, app.url);
+        document.getElementById("search-menu")?.remove();
+    };
+
+    card.innerHTML = `
+        <img src="${app.image}" style="width: 28px; height: 28px; margin-bottom: 8px;">
+        <div style="font-size: 11px;">${app.name}</div>
+    `;    
+    topAppsGrid.appendChild(card);
+});
+
+
+    input.oninput = (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    if (query.length > 0) {
+        defaultContent.style.display = "none";
+        resultsGrid.style.display = "grid";
+        
+        const all = [
+            ...(storeApps.games || []), 
+            ...(storeApps.apps || []), 
+            ...(storeApps.devtools || [])
+        ];
+        
+        const filtered = all.filter(a => a.name.toLowerCase().includes(query));
+        renderApps(filtered, resultsGrid);
+    } else {
+        defaultContent.style.display = "block";
+        resultsGrid.style.display = "none";
+    }
+};
+
+    
+    input.focus();
+}
+
+
+
+// end of search section ^
         
 /* ============================
    GLOBAL STATE
@@ -1758,8 +1909,7 @@ function loadSettings(type, btn) {
     const desktop = document.getElementById('desktop');
     const taskbar = document.getElementById('taskbar');
     
-    // Check localStorage first for values to show in the UI
-    const currentBg = localStorage.getItem('zero_wallpaper') || "https://i.imgur.com/Jiefjwl.jpeg";
+    const currentBg = localStorage.getItem('zero_wallpaper') || "https://static.vecteezy.com/system/resources/previews/005/732/454/non_2x/night-in-coniferous-forest-with-mountain-rising-moon-and-stars-vector.jpg";
     const currentBlur = localStorage.getItem('zero_blur') || 20;
     const isFloating = localStorage.getItem('zero_is_floating') === 'true';
 
@@ -2461,6 +2611,8 @@ document.addEventListener("visibilitychange", function() {
 });
 
 
+
+
 /* ============================
    EVENT BINDINGS
    ============================ */
@@ -2473,7 +2625,7 @@ renderPinnedApps();
 
 async function OfflineDownload() {
     const btn = document.getElementById('dlBtn');
-    const url = 'https://raw.githubusercontent.com/redtide-stack/zeroOS/refs/heads/main/index.html';
+    const url = 'https://raw.githubusercontent.com/bluetidestack/ZeroOS/refs/heads/main/index.html';
     
     btn.disabled = true;
     btn.innerText = 'Fetching...';
@@ -2584,7 +2736,6 @@ function createLoader() {
 document.addEventListener('contextmenu', e => {
 
   
-  // 1. Create or Get the Menu
   let menu = document.getElementById('custom-ctx');
   if (!menu) {
     menu = document.createElement('div');
