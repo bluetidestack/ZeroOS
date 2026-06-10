@@ -1,3 +1,4 @@
+<!-- cm]=c mmmmmmmmmmmmmmm -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,7 @@
   <title>zeroOS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="https://i.imgur.com/126nI80.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap');
 
@@ -29,7 +31,8 @@ html, body {
 #desktop {
   width: 100%;
   height: 100%;
-  background: url("https://static.vecteezy.com/system/resources/previews/005/732/454/non_2x/night-in-coniferous-forest-with-mountain-rising-moon-and-stars-vector.jpg") center/cover no-repeat;
+  background: url("https://i.imgur.com/I0h3LAP.jpeg") center/cover no-repeat;
+  /* https://i.imgur.com/MAD88PD.png old win11 wallpaper */
   position: relative;
 
   display: flex;
@@ -88,6 +91,26 @@ html, body {
   background: rgba(255,255,255,0.35);
 }
 
+.button {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 10px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    position: relative;
+    color: white;
+    cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;
+}
+
+.button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 .taskbar-icon {
   width: 46px;
   height: 46px;
@@ -98,7 +121,6 @@ html, body {
   align-items: center;
   justify-content: center;
   cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;
-  transition: all 0.2s;
 }
 
 .taskbar-icon img {
@@ -109,12 +131,10 @@ html, body {
 
 .taskbar-icon:hover {
   background: rgba(255, 255, 255, 0.1) !important;
-  box-shadow: inset 0 0 10px rgba(96, 165, 250, 0.2), 0 5px 15px rgba(0,0,0,0.3);
-  transform: translateY(-2px);
 }
 
-.taskbar-icon:active {
-  transform: translateY(2px); /* i went the generic route mb gng you gotta admit tho it looks nice */
+.taskbar-icon img:active {
+  transform: scale(0.9);
 }
 
 /* ===================== START MENU ===================== */
@@ -263,11 +283,11 @@ html, body {
 /* Apps/games/devtools from the store 🤓 */
 .store-item {
   /* aspect-ratio: 9 / 9; */
-  width: 60%;
-  max-width: 220px;
+  width: 80%;
+  max-width: 250px;
   height: 130px;
 
-  background: rgba(255,255,255,0.12);
+  background: rgba(200,200,200,0.12);
   border-radius: 12px;
   padding: 12px;
 
@@ -278,13 +298,45 @@ html, body {
   justify-content: center;
 
   position: relative;
-  cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;
+  /* cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; */
   transition: background 0.2s;
   font-size: 12px;
 }
 
 .store-item:hover {
-  background: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.12);
+}
+
+.store-item img {
+  width: 64px;
+  height: 64px;
+  /* was 48px */
+  margin-bottom: 8px;
+}
+
+/* Apps/games/devtools from the store 🤓 */
+.store-item {
+  /* aspect-ratio: 9 / 9; */
+  width: 80%;
+  max-width: 250px;
+  height: 130px;
+  background: rgba(200,200,200,0.12);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  border: 2px solid #272727;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  /* cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; */
+  transition: background 0.2s;
+  font-size: 12px;
+}
+
+.store-item:hover {
+  background: rgba(117, 117, 117, 0.35);
 }
 
 .store-item img {
@@ -300,18 +352,17 @@ html, body {
   right: 6px;
   width: 22px;
   height: 22px;
-  border-radius: 8px;
+  border-radius: 6px;
   background: rgba(33, 155, 12, 0.98);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 13px;
   cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;
-  transition: all 0.2s;
 }
 
 .pin-button.pinned {
-  background: red;
+  background: #a00000;
 }
 
 .pin-button:hover {
@@ -623,37 +674,7 @@ html, body {
     background-color: #323232;
 }
 
-/* Apps/games/devtools from the store 🤓 */
-.store-item {
-  /* aspect-ratio: 9 / 9; */
-  width: 60%;
-  max-width: 220px;
-  height: 130px;
-  background: rgba(255,255,255,0.12);
-  border-radius: 8px;
-  padding: 12px;
-  display: flex;
-  border: 2px solid #555;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  position: relative;
-  cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;
-  transition: background 0.2s;
-  font-size: 12px;
-}
 
-.store-item:hover {
-  background: rgba(255,255,255,0.35);
-}
-
-.store-item img {
-  width: 64px;
-  height: 64px;
-  /* was 48px */
-  margin-bottom: 8px;
-}
 /* lil blue indicator in the store sections */
 .store-nav-btn.active::before {
     content: "";
@@ -756,9 +777,8 @@ html, body {
 
 .search-wrapper {
     position: relative;
-    width: 100%;
     display: flex;
-    cursor: url(https://i.imgur.com), text !important;
+    cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;
 }
 
 .search-wrapper::after {
@@ -767,19 +787,21 @@ html, body {
     bottom: 0;
     left: 50%;
     width: 0;
-    height: 2px;
+    height: 1.5px;
     background: #0078D4; 
     transition: width 0.3s ease, left 0.3s ease;
     pointer-events: none;
+    border-radius: 0 0 4px 4px;
 }
 
 .search-wrapper:focus-within::after {
     width: 100%;
     left: 0;
+    border-radius: 0 0 4px 4px;
 }
 
 #start-search {
-    cursor: url(https://i.imgur.com), text !important;
+    cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;
 }
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -793,22 +815,25 @@ html, body {
 }
 .modal-input-group {
     position: relative; margin-bottom: 20px;
+    border-radius: 4px 4px 0 0;
 }
 .modal-input-group input {
     width: 100%; padding: 12px; background: #2b2b2b; color: white;
     border: none; border-bottom: 2px solid #444; outline: none; box-sizing: border-box;
+    border-radius: 4px 4px 0 0;
 }
 .modal-input-group::after {
     content: ""; position: absolute; bottom: 0; left: 50%;
     width: 0; height: 2px; background: #0078D4; transition: 0.3s ease;
+    border-radius: 4px 4px 0 0;
 }
 .modal-input-group:focus-within::after {
     width: 100%; left: 0;
+    border-radius: 0 0 4px 4px;
 }
 
-/* The Active Indicator (Windows 11 Style) */
 .taskbar-icon {
-    position: relative; /* Essential to anchor the line */
+    position: relative; 
 }
 
 .taskbar-icon.active::after {
@@ -817,9 +842,9 @@ html, body {
     bottom: 2px;
     left: 50%;
     transform: translateX(-50%);
-    width: 6px; /* Small pill shape */
+    width: 6px;
     height: 3px;
-    background-color: #0078D4; /* Windows Accent Blue */
+    background-color: #0078D4; 
     border-radius: 2px;
     transition: width 0.2s ease;
 }
@@ -891,15 +916,32 @@ html, body {
 }
 
 .allapps-btn:hover {
- background: #515151; 
+ background: #353535; 
+}
+
+.customcardbtn {
+    width: 100%; 
+    padding: 12px; 
+    background: transparent; 
+    border: 2px solid #0078D4;
+    color: white; 
+    order: none; 
+    border-radius: 6px; 
+    font-weight: 600; 
+    cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;
+    transition: 0.2s ease all;
+}
+
+.customcardbtn:hover {
+    background: #0078D4;
 }
   </style>
 </head>
 <body oncontextmenu="return false;">
 <div id="welcome-notif" class="site-notification" style="display: none;">
     <span class="notif-close" onclick="closeNotif()">✕</span>
-    <h4>Welcome to zeroOS!</h4>
-    <p>Hope you enjoy your stay! For best usage, I recommend zooming the site to 80% by pressing [ctrl] + [-] twice. Let me know if you find any bugs, check out the settings, disguise the tab, and have fun! Also, all the games are in the microsoft store, or click the game icon in the taskbar for gn-math.</p>
+    <h4><i class="fa-solid fa-heart" style="margin-right: 5px;"></i> Welcome to zeroOS!</h4>
+    <p>Hope you enjoy your stay! For best usage, I recommend zooming the site to 80% by pressing [ctrl] + [-] twice. Let me know if you find any bugs, check out the settings, disguise the tab, and have fun! Also, all the games are in the microsoft store including gn-math.</p>
     <div class="notif-options">
         <input type="checkbox" id="dont-show-checkbox">
         <label for="dont-show-checkbox">Do not show me again</label>
@@ -908,53 +950,70 @@ html, body {
 
 
   <div id="desktop">
-    <div id="taskbar" style="display: flex; justify-content: space-between; align-items: center; width: 100%; height: 58px; background: rgba(32, 32, 32, 0.7); backdrop-filter: blur(10px); position: fixed; bottom: 0; left: 0; z-index: 9999;">
+    <div id="taskbar" style="display: flex; justify-content: space-between; align-items: center; width: 100%; height: 58px; background: rgba(32, 32, 32, 0.7); backdrop-filter: blur(2px); position: fixed; bottom: 0; left: 0; z-index: 9999;">
   
   <div style="width: 250px; flex-shrink: 0;"></div>
 
   <div id="taskbar-inner" style="display: flex; align-items: center; gap: 8px;">
+    
     <!-- start mnu  -->
     <div class="taskbar-icon" id="start-button" onclick="toggleStartMenu(event)" onmouseenter="showTooltip(this, 'Start')">
       <img src="https://preview.redd.it/sudz5o3s1vn91.png?width=1080&format=png&auto=webp&s=27107d9d26f3b82ee00f53becd873b7bef881744">
     </div>
+    
     <!-- search -->
     <div class="taskbar-icon" id="taskbar-search-icon" onclick="toggleSearchMenu(event)">
       <img src="https://i.imgur.com/2DDJj2G.png">
     </div>
+    
     <!-- settings -->
     <div class="taskbar-icon" onclick="openSettings()" onmouseenter="showTooltip(this, 'Settings')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Windows_Settings_icon.svg/960px-Windows_Settings_icon.svg.png" alt="settings">
     </div>
+    
     <!-- browser -->
-    <div class="taskbar-icon" onclick="openApp('Edge', 'https://bluetidestack.github.io/flowbrowser/index.html')" onmouseenter="showTooltip(this, 'Edge')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Microsoft_Edge_logo_%282019%29.png" alt="Edge">
+    <div class="taskbar-icon" onclick="openApp('Mini Browser', 'mini.html')" onmouseenter="showTooltip(this, 'Mini Browser')">
+      <img src="https://i.imgur.com/ANyuJY3.png" alt="Mini">
     </div>
+    
     <!-- terminal -->
-    <div class="taskbar-icon" onclick="openApp('Terminal', 'https://www.terminaltemple.com/')" onmouseenter="showTooltip(this, 'Terminal')">
-      <img src="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico" alt="terminal">
+    <div class="taskbar-icon" onclick="OpenTerminal()" onmouseenter="showTooltip(this, 'Terminal')">
+        <img src="https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico" alt="terminal">
     </div>
+    
+    <!-- file explorer -->
+     <div class="taskbar-icon" onclick="new FileExplorer().openWindow()" onmouseenter="showTooltip(this, 'File Explorer')">
+      <img src="https://i.imgur.com/Dgc6lDp.png" alt="File Explorer">
+    </div>
+    
     <!-- chat -->
     <div class="taskbar-icon" onclick="openApp('Chatroom', 'https://redtide-stack.github.io/zeroOS-assets/chat.html')" onmouseenter="showTooltip(this, 'Chatroom')">
       <img src="https://static.vecteezy.com/system/resources/thumbnails/008/508/754/small/3d-chat-mail-message-notification-chatting-illustration-png.png" alt="chatroom">
     </div>
+    
     <!-- vscode -->
      <div class="taskbar-icon" onclick="openApp('Visual Studio Code', 'https://bluetidestack.github.io/ht.mlfork/index.html')" onmouseenter="showTooltip(this, 'VS Code')">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/960px-Visual_Studio_Code_1.35_icon.svg.png" alt="VS Code">
     </div>
+    
     <!-- calc -->
     <div class="taskbar-icon" onclick="openApp('Calculator', 'https://desmos.com/scientific')" onmouseenter="showTooltip(this, 'Calculator')">
       <img src="https://i.imgur.com/pwVPAKD.png">
     </div>
+    
     <!-- camara -->
     <div class="taskbar-icon" onclick="openApp('Camera', 'https://redtide-stack.github.io/zeroOS-assets/camera.html')" onmouseenter="showTooltip(this, 'Camera')">
       <img src="https://i.imgur.com/fV1Tu3S.png">
     </div>
+   
     <!-- Megahard store -->
     <div id="taskbar-store-btn" class="taskbar-icon" onclick="openStore()">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Microsoft_Store_Fluent_Design_icon_Windows_11.png" onmouseenter="showTooltip(this, 'Microsoft Store')" alt="Microsoft Store">
     </div>
-    <div id="taskbar-icon" class="taskbar-icon" onclick="openApp('gn-math', 'https://redtide-stack.github.io/zeroOS-assets/moregames.html')">
-      <img src="https://preview.redd.it/ive-made-an-icon-for-the-game-folder-v0-c3d0dd0nvcxe1.png?width=640&crop=smart&auto=webp&s=56cbef51d6fdb7154cd5acd64fa8b3f1b3861c88" onmouseenter="showTooltip(this, 'gn-math')" alt="gn-math">
+    
+    <!-- monochrome -->
+     <div id="taskbar-store-btn" class="taskbar-icon" onclick="openApp('Monochrome', 'https://monochrome.tf/')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotify_icon.svg/3840px-Spotify_icon.svg.png" onmouseenter="showTooltip(this, 'Monochrome')" alt="Microsoft Store">
     </div>
   </div>
 
@@ -971,9 +1030,7 @@ html, body {
           
           <span id="battery-percent-hidden" style="display: none;">--%</span>
           
-          <img id="battery-icon" 
-              src="https://i.imgur.com/et5Jg9c.png" 
-              style="width: 22px; opacity: 0.9;">
+          <i class="fa-solid fa-battery-full"></i>
         </div>
       </div>
     </div>
@@ -991,12 +1048,16 @@ html, body {
 const savedStoreData = localStorage.getItem("zeroOS_custom_store");
 
 let snapTimer = null;
+    
+document.addEventListener("DOMContentLoaded", () => {
+    renderAutoDesktopApps();
+});
 
 // this scary looking function takes care of searching for start menu and search menu
 const renderApps = (apps, container) => {
     container.innerHTML = "";
     if (apps.length === 0) {
-        container.innerHTML = `<p style="color: #888; font-size: 13px; text-align: center; margin-top: 20px;">No results found</p>`;
+        container.innerHTML = `<p style="color: #888; font-size: 13px; text-align: center; align-items: center; margin-top: 20px;">No results found</p>`;
         return;
     }
     apps.forEach(app => {
@@ -1041,58 +1102,99 @@ function applyFloatingStyles(el) {
     el.style.border = "1px solid rgba(255,255,255,0.1)";
 }
 
-
 const storeApps = savedStoreData ? JSON.parse(savedStoreData) : {
     games: [
-      { name: "All Games", url: "https://redtide-stack.github.io/zeroOS-assets/moregames.html", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
-      { name: "PolyTrack", url: "https://gaming-escape.github.io/public/assets/games/poly-track/index.html", image: "https://gguardian213213.axsetubal.pt/images/games/polytrack-min.jpg" },
+      { name: "All Games", url: "https://st0ck.pythonanywhere.com/", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
+      { name: "Granny", url: "http://gn-math.github.io/html/90-fix2.html", image: "https://static.wikia.nocookie.net/granny/images/c/ce/App_icon_v1.3.2%2B.png/revision/latest?cb=20210320221242" },
+      { name: "Fancade", url: "https://play.fancade.com", image: "https://www.fancade.com/images/fancade.jpg" },
+      { name: "PolyTrack", url: "https://gaming-escape.github.io/public/assets/games/poly-track/index.html", image: "https://thaka.bing.com/th?id=OCGE.9n02lr0qrbm2_v3_main_webp&w=124&h=124&qlt=80&c=0&rs=1" },
       { name: "Roblox Player", url: "https://nowgg.fun/apps/a/19900/b.html", image: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.jpg" },
-      { name: "Sketchbook 0.4", url: "https://roblox-unblock.github.io/r8/sketchbook-04/", image: "https://gguardian213213.axsetubal.pt/images/games/sketchbook-min.png" },
+      { name: "Sketchbook 0.4", url: "https://roblox-unblock.github.io/r8/sketchbook-04/", image: "https://canada1.discourse-cdn.com/flex035/uploads/threejs/original/2X/2/26322e254e5e482acc0970883d347f1eccb2dc2d.jpeg" },
+      { name: "Baldis Basics", url: "https://www.3kh0-assets.silvereen.net/3kh0-assets/baldis-basics/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS503FMLnvO0aryyj2Ktuw65_zPMnbn1xmfOQ&s" },
       { name: "Super Tunnel Rush", url: "https://23azostore.github.io/s3/super-tunnel-rush", image: "https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=314,height=314,fit=cover,f=auto/58fe1e7371ce50318e3c31024b561209/super-tunnel-rush.png" },
+      { name: "Papery Planes", url: "https://rawcdn.githack.com/genizy/assets/main/papery-planes/", image: "https://rawcdn.githack.com/genizy/assets/main/papery-planes/thumb.png" },
+      { name: "Tunnel Rush", url: "https://1kh0.github.io/projects/tunnel-rush/index.html", image: "https://images.hellokids.com/_uploads/_tiny_galerie/20180415/vign-tunnel-rush-hk-w8v_u89.jpg" },
+      { name: "Idle Breakout", url: "https://3kh0.bitbucket.io/projects/idle-breakout/index.html", image: "https://app.flamepass.com/assets/imgs/g/Idle_Breakout.webp" },
       { name: "Duck Life 3", url: "https://selenitebyplayer.artmuseum.org/resources/semag/ducklife3/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3em2qQpj_DxFl1HeNIZn8B-8mujTR59SFHQ&s" },
-      { name: "Cluster Rush", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/clusterrush.html", image: "https://gguardian213213.axsetubal.pt/images/games/cluster-min.png" },
+      { name: "Cluster Rush", url: "https://roblox-unblock.github.io/r8/cluster-rush/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp5XFGxVReP3-PW2bMDW-VkYdZpV95sLoEvw&s" },
+      { name: "Hextris", url: "https://www.3kh0-assets.silvereen.net/3kh0-assets/hextris/", image: "https://play-lh.googleusercontent.com/nCzeX0WCpn8iLxQV9TgrWr6Xt4JZPT0nExE7iSC48KacKxtx_7c4dAYrlMYgTM_HtHg" },
+      { name: "Wordle Unlimited", url: "https://roblox-unblock.github.io/r9/wordle-unlimited", image: "https://www.nytimes.com/games-assets/v2/assets/wordle/wordle_logo_32x32.png" },
       { name: "Gameing", url: "https://windows96.net/system/apps/gameing/", image: "https://i.imgur.com/geqTaWH.png" },
-      { name: "Escape Road", url: "https://redtide-stack.github.io/zeroOS-assets/escroad.html", image: "https://escaperoad.io/cache/data/image/game/escape-road-game-sr1-f240x240.webp" },
-      { name: "Escape Road 2", url: "https://bluetidestack.github.io/escape-road-2/index.html", image: "https://escaperoad2d.io/data/image/game/escape-road-2-cover.png" },
+      { name: "Level Devil", url: "https://gaming-escape.github.io/public/assets/games/level-devil/index.html", image: "https://play-lh.googleusercontent.com/1zTWXjwCUeRmOVeqNnmrb-oR-KELGQMOLjrcZ2cXkQby8pQRpD5Wrng7Z8JPuWrsqQ=w240-h480-rw" },
+      { name: "Escape Road", url: "https://escaperoadx.github.io/escaperoad/index.html", image: "https://escaperoad.io/cache/data/image/game/escape-road-game-sr1-f240x240.webp" },
+      { name: "Highway Traffic", url: "https://roblox-unblock.github.io/r7/highway-traffic", image: "https://gameforge.com/de-DE/littlegames/includes/images/games/10019_5eb3f067df246.jpg" },
       { name: "Minecraft Launcher", url: "https://eaglercraft.q13x.com/1.12.2/wasm/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHDDzMFbYR5tfpoSCpqt_iltsGj5kzFTX5ew&s" },
+      { name: "Minecraft 1.8.8", url: "https://gaming-escape.github.io/public/assets/games/eaglercraft/index.html", image: "https://cdn2.steamgriddb.com/logo/f2ac9ea9df6a1fa405a3d2647e411c88.png" },
+      { name: "Bloxorz", url: "https://lite.3kh0.net/projects/bloxors/", image: "https://geometrydashfullversion.io/data/image/game/bloxorz/bloxorz.jpg" },
+      { name: "Drift Hunters", url: "https://gaming-escape.github.io/public/assets/games/drift-hunters/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTfej2PWP4aevgKf2cACsa3foVZelRjl5CFM6emko8jSn0Q50JrxEIW9m5NPvigeOtWrK7&s=10" },
+      { name: "Funny Shooter 2", url: "https://gaming-escape.github.io/public/assets/games/funny-shooter-2/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOpjUpFMOU0UliFPfTuiYN2QcjSc-04UQ50g&s" },
       { name: "Crazy Cattle 3D", url: "https://zxsgames.vip/g/crazycattle.html", image: "https://img.itch.zone/aW1nLzIwNzkwNDg0LnBuZw==/315x250%23c/O5flR4.png" },
-      { name: "Geometry Dash Lite", url: "https://script.google.com/a/macros/ogsd.net/s/AKfycbydNb9Y8FIM3D0vcweKtYCYbjJcSXghedO6MN0aWbP5qIwamjjSkBDirvuMHR_6sc4/exec", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBms9b8YIAtSUbezumxG-dUppHEplVXpAlnA&s", },
-      { name: "Crossy Road", url: "https://cantblockthis.neocities.org/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQR2Yhu6Qcf7NRF_jlPRlkmjIq5KhX0variQ&s", },
-      { name: "Vex 5", url: "https://1kh0.github.io/projects/vex5/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiSGNiaeJzo2oLkYw7PHQ9dMBkkqXTy7jRIg&s" },
-      { name: "Vex 6", url: "https://1kh0.github.io/projects/vex6/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWGZ2hTJsSTm1l1ur5lAXSchV4_wpuBKXQTQ&s", },
-      { name: "Vex 7", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/vex7.html", image: "https://gguardian213213.axsetubal.pt/images/games/vex7.png" }, // im not trying to do the joke vex 8 just didnt work and im too lazy to add all others
-      { name: "Vex Challenges", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/vexchallenges.html", image: "https://gguardian213213.axsetubal.pt/images/games/vexchallenges.png" },
-      { name: "Slope", url: "https://3kh0.github.io/projects/slope/", image: "https://slopegame-online.com/slope.webp", },
-      { name: "Stickman Hook", url: "https://online.fuxien.com/projects/stickman-hook/index.html", image: "https://frogies.global.ssl.fastly.net/stuff/games/stickmanhook.jpg" },
+      { name: "Backrooms", url: "https://abc.cloudfree.jp/backrooms/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-igS4fjnW_FrkodIOwrzSRkWrMhdoIuot7w&s" },
+      { name: "Glass City", url: "https://rpc.lol/games/projects/glass-city/index.html", image: "https://i.imgur.com/AMXvwDi.png" },
+      { name: "Basketball Stars", url: "https://cbgamesdev.github.io/chilibowlflash/bstars/index.html", image: "https://realvcsa.jtlanguage.com/assets/img/basketballstars.webp" },
+      { name: "Geometry Dash (better)", url: "https://web-dashers.github.io", image: "https://static.wikia.nocookie.net/logopedia/images/4/41/Geometry_Dash_Icon.svg/revision/latest?cb=20220220121501" },
+      { name: "Geometry Dash Lite", url: "https://gaming-escape.github.io/public/assets/games/geometry-dash/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBms9b8YIAtSUbezumxG-dUppHEplVXpAlnA&s", },
+      { name: "Granny 3 Return the School", url: "https://st.8games.net/7/8g/igra-grenni-3-vozvrashchenie-v-shkolu/", image: "https://img.gamedistribution.com/ec2e7f9b7a9f441b92f19100627d94cc-512x384.jpg" },
+      { name: "Crossy Road", url: "https://gaming-escape.github.io/public/assets/games/crossy-road/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQR2Yhu6Qcf7NRF_jlPRlkmjIq5KhX0variQ&s", },
+      { name: "Cookie Clicker", url: "https://a6936-19424025.cluster7.canvas-user-content.com/courses/6936~1014013/files/6936~19424025/course%20files/cookie%20clicker/index.html?download=1&inline=1", image: "https://play-lh.googleusercontent.com/Z1MOuuiD05ZN5LkVmMEvKF0mqAc-FknaQ2j8s4dZiO-LSPQX4EEA3RVJdlQEtxe96ok" },
+      { name: "Basket Random", url: "https://roblox-unblock.github.io/r8/basket-random/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0qj4H4c1nnfsygBxoQEbJkkUZ7yY_LkTnkA&s" },
+      { name: "Soccer Random", url: "https://gaming-escape.github.io/public/assets/games/soccer-random/index.html", image: "https://play-lh.googleusercontent.com/G1PIlb6HWKSaDre0XpUcmKGps9T4iamsSlwrogB3EJzYv4bz0M2am4D17MtGzndaOOU" },
+      { name: "Volley Random", url: "https://gaming-escape.github.io/public/assets/games/volley-random/index.html", image: "https://play-lh.googleusercontent.com/VeKAevaOjPlcyCtOpFY1h6SjwEjnu4ryG3xQ_qw1Muuhrg8pqwhl1aPjWovMkjc0Rc4" },
+      { name: "Run 3", url: "https://www.yurk.com/games/run3/", image: "https://e.snmc.io/lk/fv/x/0aa99fb888648894fa4f6cadeee44bc5/10934781" },
+      { name: "Vex 3", url: "https://gaming-escape.github.io/public/assets/games/vex-3/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7eD3wu6Fst8RaTT_EEMyPbrXWxg4IVqI0Vg&s" },
+      { name: "Vex 4", url: "https://gaming-escape.github.io/public/assets/games/vex-4/index.html", image: "https://kizicdn.com/system/static/thumbs/tile_thumb/5372/thumb150_thumb150_80e6a5ae477f4d4fbcd1ea293d10087d-512x512.jpg?1586010289" },
+      { name: "Vex 5", url: "https://gaming-escape.github.io/public/assets/games/vex-5/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcw-Ys5zeLyq0iQrpbfux-rCQyA1aOux3fnw&s" },
+      { name: "Vex 6", url: "https://1kh0.github.io/projects/vex6/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWGZ2hTJsSTm1l1ur5lAXSchV4_wpuBKXQTQ&s", }, // resist
+      { name: "Vex 7", url: "https://gaming-escape.github.io/public/assets/games/vex-7/index.html", image: "https://vex7online.github.io/vex-7.png" }, // resist
+      { name: "Vex 8", url: "https://gaming-escape.github.io/public/assets/games/vex-8/index.html", image: "https://play-lh.googleusercontent.com/4tQSYur7SAvXeEvT5GBugYeqbh8KEQSLd1S16t8CJYyDN3g2p27wiPlXnqqAxeCqvg" },
+      { name: "Among Us", url: "https://classwork-heaven.pages.dev/among-us/", image: "https://img.utdstc.com/icon/015/d1c/015d1cecf14c3ef529e92d788304fe58aa571c4e3ebaf4d78d5eea44f693c844:200" }, 
+      { name: "Angry Birds", url: "https://gaming-escape.github.io/public/assets/games/angry-birds/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7iU_Mdwbo2YsBFDs_are4yc-wBRzSrmV7kA&s" },
+      { name: "Slope", url: "https://gaming-escape.github.io/public/assets/games/slope/index.html", image: "https://slopegame-online.com/slope.webp", },  
+      { name: "Death Run 3D", url: "https://roblox-unblock.github.io/r7/death-run-3d", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsrvUvXoOUm4TLWH2s4SgR3EfWuFNyj9h1EQ&s" },
+      { name: "Stickman Hook", url: "https://online.fuxien.com/projects/stickman-hook/index.html", image: "https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/99e090d154caf30f3625df7e456d5984/stickman-hook-logo.png" },
+      { name: "Blumgi Paintball", url: "https://gaming-escape.github.io/public/assets/games/blumgi-paintball/index.html", image: "https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/59e84a26f2a9b86580160539bd525c13/blumgi-paintball-logo.png" },
+      { name: "Sandspiel", url: "https://sandspiel.club", image: "https://lh3.googleusercontent.com/EvV7oJ5iYvdMj_NlGAmvUgiKYs4HXTJe3tGGgY2mSjis0Vpu1hpaJZjEAsBE5MNjZsa0aBG9VmJPm9-ADkDUT7dz6OyqVg" },
       { name: "Tetris", url: "https://1kh0.github.io/projects/flashtetris/index.html", image: "https://tetris.com/_next/image?url=https%3A%2F%2Fwww.datocms-assets.com%2F145957%2F1744295598-tetris-firetv-appicon-728x728_728x728.png&w=2048&q=75", },
       { name: "Worlds Hardest Game", url: "https://1kh0.github.io/projects/worlds-hardest-game/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAitjWxCWZeKzNg5wO6HLWJyKg5X34WClFKQ&s", },
+      { name: "Chicken Merge 2", url: "https://gaming-escape.github.io/public/assets/games/chicken-merge-2/index.html", image: "https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/d607dd571ef6732de82621d1b29afbbb/chicken-merge-2-logo.png" },
       { name: "Ultrakill", url: "https://redtide-stack.github.io/zeroOS-assets/ultrakill.html", image: "https://assets-prd.ignimgs.com/2022/04/08/ultrakill-1649459578320.jpg" },
-      { name: "Stickman and Guns", url: "https://redtide-stack.github.io/zeroOS-assets/stickmanguns.html", image: "https://cdn.jsdelivr.net/gh/gn-math/covers@main/578.png" },
+      { name: "Chrome Dino", url: "https://3kh0.bitbucket.io/projects/chrome-dino/index.html", image: "https://cdn.jsdelivr.net/gh/DogeNetwork/v5-assets/img/chromedino.webp" },
+      { name: "Stickman and Guns", url: "https://redtide-stack.github.io/zeroOS-assets/stickmanguns.html", image: "https://imgs.crazygames.com/stickman-and-guns_1x1/20250721145119/stickman-and-guns_1x1-cover?metadata=none&quality=60&width=138" },
+      { name: "Eggy Car", url: "https://www.yurk.com/games/eggycar/", image: "https://eggy-cargame.github.io/cache/data/image/game/eggy-car/eggy-car-m186x186.webp" },
+      { name: "Fancade Car Crash", url: "https://play.fancade.com/5EE8E8D67D939591", image: "https://i.imgur.com/7Tfo5TF.png" },
       { name: "Drive Mad", url: "https://www.swordslasher.com/games/drive-mad/game.html", image: "https://azgames.io/upload/imgs/drivemad.png" },
+      { name: "Drive Mad (Poki)", url: "random/drivemadpoki.html", image: "https://play-lh.googleusercontent.com/vJwCnKoOl9hnyPOphqx0pXXQXRhcX9f747VaJ1GRUldEKTYclYEoZZC0pkgOw3hPXqM=w240-h480-rw" },
+      { name: "Drive Mad Mod", url: "https://play.fancade.com/63BA239C20C40BF3", image: "https://i.imgur.com/P0ETZci.png" }, 
+      { name: "Car Crash Test", url: "https://play.fancade.com/62164F1BE09DA5EB", image: "https://www.fancade.com/images/61E31654BF19D3D8.jpg" },
+      { name: "Slow Roads", url: "https://slowroads.io", image: "https://images.rocketgames.io/uploads/games/s/slow-roads-io/slow-roads-io.adda0e.jpg?w=94&dpr=2" },
       { name: "Monster Tracks", url: "https://mouse-practice.com/games/mp/mp08/g17/index.html", image: "https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/41c7ae4db13e7d7596bb0528f40a4012/monster-tracks.png" },
-      { name: "FNAW", url: "https://redtide-stack.github.io/zeroOS-assets/fnaw.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-qF61UgY3rRmT5ejyAOvstSSCpMcExkC5dQ&s" },
-      { name: "Blumgi Paintball", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/blumgipaintball.html", image: "https://gguardian213213.axsetubal.pt/images/games/blumgipaintball-min.png" },
-      { name: "Wordle", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/wordle.html", image: "https://gguardian213213.axsetubal.pt/images/games/wordle.png" },
-      { name: "Level Devil", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/leveldevil.html", image: "https://gguardian213213.axsetubal.pt/images/games/leveldevil-min.jpg" },
-      { name: "Slow Roads", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/slowroads.html", image: "https://gguardian213213.axsetubal.pt/images/games/slowroads-min.png" },
-      { name: "Spacebar Clicker", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/spacebarclicker.html", image: "https://gguardian213213.axsetubal.pt/images/games/spacebarclicker-min.png" },
-      { name: "Stack", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/stack.html", image: "https://gguardian213213.axsetubal.pt/images/games/stack-min.png" },
-      { name: "Tomb of the Mask", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/tombofthemask.html", image: "https://gguardian213213.axsetubal.pt/images/games/tomb-min.png" },
-      { name: "There is no Game", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/thereisnog.html", image: "https://gguardian213213.axsetubal.pt/images/games/thereisnogame-min.jpg" },
-      { name: "Tiny Fishing", url: "https://gguardian213213.axsetubal.pt/assets/mainstorage/tinyfishing.html", image: "https://gguardian213213.axsetubal.pt/images/games/tinyfish-min.png" },
+      { name: "Google Snake", url: "https://googlesnakemods.com/v/current/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYjhE9-QdbaEoa8p569ovYbZjGx4VKJaXxzw&s" },
+      { name: "Stack", url: "https://gaming-escape.github.io/public/assets/games/stack/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFRVDgoaMaGy5x027j5hGrJ0PF4ofqyiko1A&s" },
+      { name: "Monkeytype Lite", url: "https://gaming-escape.github.io/public/assets/games/monkeytype-lite/index.html", image: "https://avatars.githubusercontent.com/u/104658077?s=280&v=4" },
+      { name: "Tomb of the Mask", url: "https://gaming-escape.github.io/public/assets/games/tomb-of-the-mask/index.html", image: "https://m.media-amazon.com/images/M/MV5BNjY5YmY2ZTYtYjg1Ny00MzM5LWI5NmUtNzllNzJiZGZmOGIxXkEyXkFqcGc@._V1_.jpg" },
+      { name: "There is no Game", url: "https://pisaucer.github.io/boredhtml/games/thereisnogame/repo/alternate/871000/test.html", image: "https://play-lh.googleusercontent.com/S5qXeNBqUyuEMUb4CjBABIhRxlhusZqpDA6ZzzYlW5OAPr993AMXhORpNXQ0hv8OZAs" },
+      { name: "Tiny Fishing", url: "https://roblox-unblock.github.io/r/tiny-fishing/", image: "https://www.coolmathgames.com/sites/default/files/tiny-fishing-square-icon.png" },
+      { name: "Scrap Metal 1", url: "https://www.gamearter.com/game/scrap-metal/", image: "https://d.pacogames.com/images/webp/230x172/scrap-metal3.jpg.webp" },  
+      { name: "Scrap Metal 2", url: "https://www.gamearter.com/game/scrap-metal-2/", image: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAFwAXAMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAFAgMEBgcBAP/EAEMQAAIBAwMBBAcDCAcJAAAAAAECAwAEEQUSITEGE0FRFCIyYXGBkSOhsQdCUpKywdHSFTM0YnLw8SQ1VWOCosPT4f/EABkBAAMBAQEAAAAAAAAAAAAAAAECAwQFAP/EACcRAAICAQIEBgMAAAAAAAAAAAECAAMREkEEBSExEyIyUXGRYaHw/9oADAMBAAIRAxEAPwCyIjDCZZUYFmPgPL99TFVLe4XDApJ6jY6Bh0Nct7dbp3iRs4BySDjOf9ahuocvFuztPAz9aijEHIjEZEMmLxwcVFedFbagL4OMjpmm4Lwyx93LISc4O9yM1NEaC0WRQd7Nwq+I5+6rtxJ2kxWN523YSAcFSfA0+y44IpKwqsMbZBB5x5Cn5Mxso6hh0PhTJfnvFKe0jMnFMtH7qmu5ZwANo4Hnmo8shjba6/DPGfrVPHXMHhnGYx3furnd+6l97sfbIoGASeanwWTTxd5GwK+4E0Rcpg0GB7lpIgvdQPMzH2V6/hUcz3v/AAi5/Vb+WiOvx3Gn6fPPGm+URNtG0nngeFZHHqfay0RYIzqdyEGO9bOW/W5pXvA7QismafbM0dv3UZ8Qc/nePjTb2h7smNWznkqaC6lrMdndhLWHMG3P2xwSflxUzRu0++Pubnu8YO51JzXOXVmaShkgiMJvRifBg3vqw6RZ+mWczSzOBEuEC4Ixg0Ckkt5ftFY4YZBz1FWLsoR/R1/t9nJ/ZplYE4gURrSk9P0mW7f7Mw8bE6MAAec1Jig9K05r1mPebvZ8OuKj9lPW7PXw97fsCpWjv3nZ24/ulj8uDTVt0E2cRSql9I7ERm72iQFMY4BHgajybNyuUGEO7AI5x4e2fwpmOdd6gjGDgENTxP8Afk/XP/roM2ZGkZUiRUKzXSoyesWAbnqPdTTRSCR1t5XUE/mZGaeniXcZAxAA9Y8nHHX2QKivchSRC2R5nw+FKWkmUqcTkd9fWYeSe9dVQHa0hLBeQOlKh17UCv8AtGoJE2eAYnbI8CMUhHsp1kTUgvooQmUsWAxx+jz1xQqbVOxEchjFs8oXgMPSQPlk1eskjpiTyu4jjzabOTCULE9MRt9xxQ+59Gs5JItr+sg2OJDgj5daiN2f7QBRm1kGOcb0YDz4zTTaRqMCfb2k7Slsd2ycAeeaz12IT5WBmllT3hzQ2WeB3DMDuxgnoPDj4fWjOm6/6JNe6WtuzM9s8yPwNzYxj4cUA7NWt1biX0i3aNXAI3BevxBz91Sr6GcXwnRScRd3uB6LyTxn4Uc4eKSADPWfaa+0rS3js7NJlnO4SAMwGVAIwP40vT9av9KZRJK0kEnEttIq+IGcEe7BFVi1jnvnkmg/tblX2ocBEJPv6k4495NKtu8uFaSXe0jEEBTyT4dPnWipdhFtvLklu5hy61mZ7ItHEyusqt7Y9kEkHHXqBU+y7SLNbd9NAAME/Z94T9C4oNp7RtGYLrvojyUEi8Z4yOeuePrRGxsLK3aGW4k7tS20KSqqWPmCKBFYOGiCxwfLCVvrllcRCWOT1ScD1ZNxPkF7zJ+QpF414ll35ghiuGbIhknEZKEjk7zkHwxih2pLDo2qi8ht5WaymjlVzMqgwhOR8zu8Ks8k/Z6SNbie3s4WuU3EOwVzuweffmk0KY5vZuhgTVFPoc0LlgJUKbowHC5wfA1X5NK0BhH3pvRIqKHKqPWYDk8nj4VcL2w0m8eM6aixTM/9ahc5PQc4Iqt6q6aZevatpk7bfzlXCt7xnwp1UDoDJEzk+l9rb4E3N0Qc9O/CoPkvyrsHZfVYvWm1C0hP/LZifwFFpr2VWUNvJf2QvU/AUy9zLv2MGVyM7Dy36oya4C8Vf6VAHwJoKDeM3Oo2+iadN3xluroyBIY5XGMYPrZHOMDnk+FL0jUDqFotxsEbHO5A2c4OPpULVNKbVpITJL6P3O4ncm4n6HA6edTdL0yO3tkEQbaeSWblh8MdPdW6lMJqb1HvFyc42g3RReaXr2VtlE7iRlz0IBZiMjr6mB55HlzVj1zs/Y6yEuLBbmzEgEneWihlLZ53Jkc+8EfOuOJEKYCdfsyiAlTgjOOKCSaPPHai1Vp3iGcNFeSQ78nJ3KFYHn31rDK2CehEQrGbjRbDLQXl/q7OpA/sMgY/Ddn31YZ7a3ayhtzEzbYlQpc7GkcYHLqCQDyOvnVXfs/Jdy97MQQwy5luJZDIP+0npRzs9occV4UQQqZMbjDDsJC+BJJY/M+NNYVYQKpHWJt9S0vstEj3lhuuLr1obWAKe7jB6tngEnPTNcH5RYoUaKz0NLaMj2hPtYf9ITH31YL3sRYalqDX1zPdhyFVEUqFjUDAUcdOp+Zrw/J9omcuLlj5ll/lqqgARCZWZfyl6o8m22sLIA9CwYk/fSD+UfWk4lsdOZv8LD99XBOxXZ2Lk2xJHi0xH4EU9/QXZlPVNvaZH6U3P40/SezKxZz6MJO/1G/uJpSMELG6LjyyvrEfP5VYLTtHoUEfd2zxQp+isTKPptrPsYr3U81y1IUYAnfPLqjuZpD9odJmXHpcX1pI1DR2GDcWZ8tzpWcEZr22m1xTy1NmM0qObS3wVaxYjOCpTIp3ubBxyLck/A1mBAx0pJUdcV7XFPLRs01NLKx27Vij2+QWhHaiaDQ9HknsrYgswjLK7IEDZOdw5HTw8SKoqswHDEfA0R7O68dL163imlPcXKtGwc5AORt+/j51RGBaQt4Hwk16swE2tKV9e43KCBl9Tuz/AOWkJf2cjZeS0HH51zcyZ+XemtpS4jZskRlD4bP/AJTGpalDp8BuWgDxBlXbGg3ZJx44rQD+ZkNiY9A+zMfe4sHU7BpkjY4AtHf9smkcc7IbYLngLpMJH3pWsntEEKmTSb6BCQDI8SBVycZPrUX9Jbwdcf591E/MC2qB6AfuYtpuknUrGzuYdW1YNLbtdzqVibuYQxC8AZZ3wdo9xJxjFQ+0ukavounXN2mo3M6R3zwq427BAo4kY+ZYgAfGtnl0rTZP6zT7Rv8AFAp/dUN+zuiM+TpFhnzFuoP4VPWvtCLH3YzOIlkg0qOa4tXZ49HgmkdzIC1xNMFXPrYyqBiRjxpfFaC3ZXQSdw0yBT1yoIxXB2T0mQt9lKuPKU1KzzdhNvC8WtQOsk/3zM/r1XmfsdpyjKy3Q929f4UGvdDtrf2JJj8SP4VIqROgnGVN2leA4qDqNi1yFaNgJE8+hok6hSQKbFAEg5Es6K64MHQ6r2hskCpc3RQdBu3AfjTN32i1ueJoLm/mKMQSpRQeDkc4B6gUWNcZVYYdQ3xGasLjML8vTYwK+v6u42vqVy65B2tISPpUo9rNfJ/3nL8o0/lqdHGiE7EVc+Qp2ib/AMRRy4Y7/qf/2Q==" },
+      { name: "Scrap Metal 3", url: "https://adfree3kh0.github.io/projects/scrapmetal/index.html", image: "https://www.drifted.com/wp-content/uploads/2018/10/scrap-metal-3-full-size.jpg" },  
+      { name: "Scrap Metal 4", url: "https://www.gamearter.com/game/scrap-metal-4/", image: "https://d.pacogames.com/images/webp/230x172/drift-cars.jpg.webp" },
+      { name: "Scrap Metal 5", url: "https://www.gamearter.com/game/scrap-metal-5/", image: "https://d.pacogames.com/images/300x300/scrap-metal.jpg" },
+      { name: "Scrap Metal 6", url: "https://www.gamearter.com/game/scrap-metal-6/", image: "https://d.pacogames.com/images/webp/230x172/scrap-metal-6.jpg.webp" },
+      { name: "Breaking the bank", url: "https://mountain658.github.io/zbreakingthebank.html", image: "https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/0f80f3388aabb6153981b749df08c7fc6048d5234a40e9e88d7afc73178b451e/breaking-the-bank.png" },
+      { name: "Escaping the prison", url: "https://gaming-escape.github.io/public/assets/games/escaping-the-prison/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUyoW3l_IEiKuVTnoNtp_Nu2GnuH0SL7i77g&s" },
+      { name: "Stealing the diamond", url: "https://gaming-escape.github.io/public/assets/games/stealing-the-diamond/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1sBudh3LoVRZAW9iHBnav7zNGKcssJv5DtA&s" },
+      { name: "Infiltrating the airship", url: "https://gaming-escape.github.io/public/assets/games/infiltrating-the-airship/index.html", image: "https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=314,height=314,fit=cover,f=auto/680d89360540e68fb8d45babd5441c7d95e4879a1e9cd7d28399ff1f52616481/infiltrating-the-airship.png" },
+      { name: "Fleeing the complex", url: "https://gaming-escape.github.io/public/assets/games/fleeing-the-complex/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5Dz-SmA8n9GhnZqqHb9pRg4nmLoGWkH64Ig&s" },
     ],
     apps: [
-      { name: "Browser", url: "https://bluetidestack.github.io/flowbrowser/index.html", image: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Microsoft_Edge_logo_%282019%29.png" },
-      { name: "Virtual Machine", url: "https://bluetidestack.github.io/retrobowl/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp5-tU4xfhZG_QzRYovCMHw14ZEG9t2tPs7g&s" },
-      { name: "Virtual Machine (Worse)", url: "https://redtide-stack.github.io/zeroOS-assets/vm.html", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Circle-icons-computer.svg/960px-Circle-icons-computer.svg.png" },
       { name: "Windows 11 in React", url: "https://win11.blueedge.me/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL5JHjCwohEDVmMh5-SZ9wfCg-970803ZbKg&s" },
-      { name: "Android Phone", url: "https://appetize.io/embed/xc1w6f1krd589zhp22a0mgftyw?autoplay=false&debug=true&device=pixel4&embed=true&launchUrl=exp%3A%2F%2Fexp.host%2F%40snack%2Fsdk.46.0.0-ghV0%21Qgb8N&scale=65&screenOnly=false&xDocMsg=true&xdocMsg=true&params=%7B&osVersion=11.0&deviceColor=black", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/960px-Android_robot.svg.png" },
+      { name: "Turbowarp", url: "https://bluetidestack.github.io/allassets/turbowarp.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLSYptKVIoO4LgojBpG79fOq5S6nV_Aa-Gxg&s" },
       { name: "Soundboard", url: "https://myinstants.com", image: "https://play-lh.googleusercontent.com/v_5LsSgLe8lMcmmKc1uYMPkaOkM3JVVkl_IvQ8m9iim5Z8Pw80MgvMyA_zc2QvVs6zA" },
       { name: "Thirty Dollar Website", url: "https://thirtydollar.website", image: "https://symbl-cdn.com/i/webp/a1/bd21bc0d5c98bb21cbfe3ff871f2aa.webp" },
       { name: "Windows 96", url: "https://windows96.net/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaOwEzAfw2sELsugCx71Wo_AwamTI-oJDOlA&s" },
-      { name: "Unsafer Chatroom", url: "https://tlk.io/nebulo", image: "https://i.imgur.com/bbbuGgD.png" },
-      { name: "Gauth Math", url: "https://gauthmath.com", image: "https://play-lh.googleusercontent.com/1CnI8ztueH5zyg2PLN1qEcPaL_j56Y48gEr2OKcD31ce799Qw91_U0QneDLmwYlCo3w" },
+      { name: "ChatGPT", url: "https://www.easemate.ai/chat-gpt-free", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/3840px-ChatGPT_logo.svg.png" },
       { name: "Notepad", url: "https://justnotepad.com", image: "https://blogs.windows.com/wp-content/uploads/prod/sites/44/2021/12/Win-Notepad.png" },
+      { name: "Unblcked Github Search", url: "https://github-repository-search-two.vercel.app/", image: "https://i.imgur.com/jgWMcGK.png" },
     ],
     devtools: [
       { name: "Visual Studio Code", url: "https://bluetidestack.github.io/ht.mlfork/index.html", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/960px-Visual_Studio_Code_1.35_icon.svg.png" },
@@ -1104,9 +1206,9 @@ const storeApps = savedStoreData ? JSON.parse(savedStoreData) : {
     ],
 };
 
-const staticRecommended = [
-  { name: "All Games", url: "https://redtide-stack.github.io/zeroOS-assets/moregames.html", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
-  { name: "PolyTrack", url: "https://gaming-escape.github.io/public/assets/games/poly-track/index.html", image: "https://gguardian213213.axsetubal.pt/images/games/polytrack-min.jpg" },
+const Recommended = [
+  { name: "All Games", url: "https://st0ck.pythonanywhere.com/", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
+  { name: "Fancade", url: "https://play.fancade.com", image: "https://www.fancade.com/images/fancade.jpg" },
 ];
 
 let startMenuOpen = false; 
@@ -1141,7 +1243,7 @@ menu.style = `
     <div class="search-wrapper" style="margin-bottom: 20px; position: relative; display: flex; align-items: center;">
     <ion-icon name="search-outline" style="position: absolute; left: 12px; color: rgba(255,255,255,0.6); font-size: 18px; pointer-events: none;"></ion-icon>
     <input type="text" id="start-search" autofocus placeholder="Type here to search..." 
-        style="width: 100%; padding: 10px 15px 10px 40px; border-radius: 4px 4px 0 0; border: none; background: rgba(255,255,255,0.1); color: white; outline: none; font-size: 14px;">
+        style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important; width: 100%; padding: 10px 15px 10px 40px; border-radius: 4px 4px 0 0; border: none; background: rgba(255,255,255,0.1); color: white; outline: none; font-size: 14px;">
 </div>
 
     
@@ -1206,12 +1308,12 @@ menu.style = `
   const allApps = [...storeApps.games, ...storeApps.apps];
 
   const randomPool = allApps.filter(app => 
-    !staticRecommended.find(staticApp => staticApp.name === app.name)
+    !Recommended.find(staticApp => staticApp.name === app.name)
   );
 
   const randomApps = randomPool.sort(() => 0.5 - Math.random()).slice(0, 4);
   
-  const finalRecommended = [...staticRecommended, ...randomApps];
+  const finalRecommended = [...Recommended, ...randomApps];
   
   const recContainer = document.getElementById("recommended-list");
   recContainer.innerHTML = ""; 
@@ -1221,10 +1323,10 @@ finalRecommended.forEach(app => {
     
     let subtext = "Recently added";
         
-    if (app.name === "PolyTrack") { 
-        subtext = "Popular";
+    if (app.name === "Fancade") { 
+        subtext = "Goated Game Library";
     } 
-    else if (staticRecommended.some(s => s.name === app.name)) {
+    else if (Recommended.some(s => s.name === app.name)) {
         subtext = "Most Used";
     } 
     else {
@@ -1232,6 +1334,7 @@ finalRecommended.forEach(app => {
     }
 
 
+    // 2. Apply a special style if it's the "Popular" one (optional)
     const isPopular = subtext === "Popular";
     const popularGlow = isPopular ? "background: rgba(255, 215, 0, 0.05);" : "";
 
@@ -1286,7 +1389,7 @@ finalRecommended.forEach(app => {
 }
 
 window.addEventListener('keydown', (e) => {
-    if (e.key === "Meta" || e.key === "Escape") { 
+    if (e.key === "Meta" || e.key === "Escape") { // Meta is the Windows/Command key
         e.preventDefault();
         toggleStartMenu();
     }
@@ -1330,13 +1433,13 @@ function updateBattery() {
       if (hiddenSpan) hiddenSpan.innerText = levelText;
 
       if (battery.charging) {
-        iconElem.src = "https://i.imgur.com/uTPQgsO.png";
+        iconElem.innerHTML = '<ion-icon name="battery-charging-outline"></ion-icon>';
         iconElem.style.width = "30px";
       } else if (level <= 20) {
-        iconElem.src = "https://i.imgur.com/shV5AQC.png";
+        iconElem.innerHTML = '<i class="fa-solid fa-battery-quarter"></i>';
         iconElem.style.width = "30px";
       } else {
-        iconElem.src = "https://i.imgur.com/P9mPg7G.png";
+        iconElem.innerHTML = '<i class="fa-solid fa-battery-full"></i>';
         iconElem.style.width = "30px";
       }
     };
@@ -1403,9 +1506,23 @@ window.addEventListener('beforeunload', function (event) {
     
     const pinnedApps = JSON.parse(localStorage.getItem("zeroos_pinned_apps")) || [];
 
-    function renderPinnedApps() {
+function renderPinnedApps() {
   const desktop = document.getElementById("desktop");
 
+  // First, remove all pinned app icons from desktop
+  document.querySelectorAll('[data-app]').forEach(icon => {
+    const appName = icon.dataset.app;
+    const isPinned = pinnedApps.some(app => app.name === appName);
+    
+    // Check if it's an auto desktop app
+    const isAutoApp = autoDesktopApps.some(app => app.name === appName);
+    
+    if (!isPinned && !isAutoApp) {
+      icon.remove();
+    }
+  });
+
+  // Then add/update all currently pinned apps
   pinnedApps.forEach(app => {
     if (document.querySelector(`[data-app="${app.name}"]`)) return;
 
@@ -1464,7 +1581,7 @@ function toggleSearchMenu(event) {
         <div style="position: relative; margin-bottom: 20px;">
             <ion-icon name="search-outline" style="position: absolute; left: 12px; top: 12px; color: #aaa;"></ion-icon>
             <input type="text" id="uni-search" autofocus placeholder="Type here to search" 
-                style="width: 100%; padding: 10px 15px 10px 40px; border-radius: 8px; border: none; background: rgba(255,255,255,0.1); color: white; outline: none; border-bottom: 2px solid #0078d4;">
+                style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important; width: 100%; padding: 10px 15px 10px 40px; border-radius: 8px; border: none; background: rgba(255,255,255,0.1); color: white; outline: none; border-bottom: 2px solid #0078d4;">
         </div>
 
         <div id="menu-content-area" style="flex: 1; overflow-y: auto; padding-right: 5px;">
@@ -1482,8 +1599,17 @@ function toggleSearchMenu(event) {
 
 
     document.body.appendChild(menu);
+    menu.addEventListener('click', (e) => e.stopPropagation());
     setupSearchLogic();
 }
+
+document.addEventListener('click', (event) => {
+    const menu = document.getElementById('search-menu');
+    if (menu && !menu.contains(event.target)) {
+        menu.remove();
+    }
+}); // hide the menu if 13 year old clicks off of it
+
 
 function setupSearchLogic() {
     const input = document.getElementById("uni-search");
@@ -1492,7 +1618,7 @@ function setupSearchLogic() {
     const topAppsGrid = document.getElementById("top-apps-grid");
 
     const topApps = [
-    { name: "All Games", url: "https://redtide-stack.github.io/zeroOS-assets/moregames.html", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
+    { name: "All Games", url: "https://st0ck.pythonanywhere.com/", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
     { name: "PolyTrack", url: "https://gaming-escape.github.io/public/assets/games/poly-track/index.html", image: "https://gguardian213213.axsetubal.pt/images/games/polytrack-min.jpg" },
     { name: "Drive Mad", url: "https://www.swordslasher.com/games/drive-mad/game.html", image: "https://azgames.io/upload/imgs/drivemad.png" },
     { name: "VS Code", url: "https://bluetidestack.github.io/ht.mlfork/index.html", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/960px-Visual_Studio_Code_1.35_icon.svg.png" },
@@ -1730,7 +1856,6 @@ function openApp(title, url) {
   win.style.left = "100px";
   win.style.zIndex = z++;
 
-  // Change your win.innerHTML slightly:
 win.innerHTML = `
     <div class="title-bar">
       <span>${title}</span>
@@ -1738,10 +1863,10 @@ win.innerHTML = `
       <div style="cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;" onclick="closeWindow(this.parentElement.parentElement,'${title}')">✕</div>
     </div>
     <div class="window-content" style="position: relative; width: 100%; height: calc(100% - 36px);">
-      <embed src="${url}" style="width: 100%; height: 100%; border: none;">
+      <object data="${url}" style="width: 100%; height: 100%; border: none;"></object>
     </div>
 `;
-
+// if embeds arent working switch object data="" to embed src="", idk which is better
 
   document.getElementById("desktop").appendChild(win);
   openWindows[title] = win;
@@ -1762,9 +1887,7 @@ function closeWindow(win, title) {
   }, 180);
 }
 
-// Change the parameter from 'title' to 'winElement'
 function toggleMaximize(winElement) {
-  // If we passed a string (title), find the window. If we passed the element, use it.
   const win = typeof winElement === 'string' ? openWindows[winElement] : winElement;
   if (!win) return;
 
@@ -1811,7 +1934,7 @@ function openSettings() {
                 position: relative;
                 width: 100%;
                 display: flex;
-                cursor: url(https://i.imgur.com/k1SSeLz.png), text!important;
+                cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;
             }
             .search-wrapper::after {
                 content: "";
@@ -1823,12 +1946,14 @@ function openSettings() {
                 background: #0078D4;
                 transition: width 0.3s ease, left 0.3s ease;
                 pointer-events: none;
-                cursor: url(https://i.imgur.com/k1SSeLz.png), text!important;
+                cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;
+                border-radius: 0 0 4px 4px;
             }
             .search-wrapper:focus-within::after {
                 width: 100%;
                 left: 0;
-                cursor: url(https://i.imgur.com/k1SSeLz.png), text!important;
+                cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;
+                border-radius: 0 0 4px 4px;
             }
             .settings-section:hover {
                 background: rgba(255, 255, 255, 0.05) !important;
@@ -1869,7 +1994,7 @@ function openSettings() {
                 <div style="margin-bottom: 5px; width: 100%; padding-right: 10px;">
                     <div class="search-wrapper">
                         <input type="text" placeholder="Find a setting" 
-                               style="width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid #757575; border-radius: 4px; padding: 7px 10px; color: #ccc; font-size: 13px; outline: none;">
+                               style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important; width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid #757575; border-radius: 4px; padding: 7px 10px; color: #ccc; font-size: 13px; outline: none;">
                     </div>
                 </div>
                 <button class="settings-section" onclick="loadSettings('system', this)" style="width:100%; text-align:left; font-size:13px; margin-bottom:4px; padding: 8px 10px; border-radius: 5px; background: transparent; display: flex; align-items: center; gap: 12px; border: none; color: white; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;">
@@ -1910,19 +2035,19 @@ function loadSettings(type, btn) {
     const desktop = document.getElementById('desktop');
     const taskbar = document.getElementById('taskbar');
     
-    const currentBg = localStorage.getItem('zero_wallpaper') || "https://static.vecteezy.com/system/resources/previews/005/732/454/non_2x/night-in-coniferous-forest-with-mountain-rising-moon-and-stars-vector.jpg";
+    const currentBg = localStorage.getItem('zero_wallpaper') || "https://i.imgur.com/I0h3LAP.jpeg";
     const currentBlur = localStorage.getItem('zero_blur') || 20;
     const isFloating = localStorage.getItem('zero_is_floating') === 'true';
 
     content.innerHTML = `
-        <h2 style="color:white;">Personalization <ion-icon name="brush-outline"></ion-icon></h2>
+        <h2 style="color:white;"><ion-icon name="brush-outline"></ion-icon> Personalization</h2>
         <p style="color:gray; font-size:13px; margin-bottom:15px;">Customize Zero to your liking.</p>
         <hr style="border:0; border-top:1px solid #444; margin:20px 0;">
         <h3>Wallpaper</h3>
         <div class="search-wrapper">
-          <input type="text" id="set-bg-url" value="${currentBg}" style="width:100%; padding:8px; background:#222; color:white; border:1px solid #444; border-radius:5px; outline: none;">
+          <input type="text" id="set-bg-url" value="${currentBg}" style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important; width:100%; padding:8px; background:#222; color:white; border:1px solid #444; border-radius:5px; outline: none;">
         </div>
-        <button id="apply-bg-btn">Apply Wallpaper</button>
+        <button id="apply-bg-btn"><i class="fa-solid fa-circle-check" style="margin-right: 5px;"></i> Apply Wallpaper</button>
         
         <hr style="border:0; border-top:1px solid #444; margin:20px 0;">
 
@@ -1961,7 +2086,7 @@ bgInput.addEventListener('keydown', function(event) {
         const val = this.value;
         taskbar.style.backdropFilter = `blur(${val}px)`;
         this.previousElementSibling.innerText = `Taskbar Blur (${val}px)`;
-        localStorage.setItem('zero_blur', val); // Save
+        localStorage.setItem('zero_blur', val); 
     };
 
     document.getElementById('taskbar-color-picker').oninput = function() {
@@ -1969,11 +2094,11 @@ bgInput.addEventListener('keydown', function(event) {
         const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
         const rgba = `rgba(${r}, ${g}, ${b}, 0.75)`;
         taskbar.style.background = rgba;
-        localStorage.setItem('zero_taskbar_color', rgba); // Save
+        localStorage.setItem('zero_taskbar_color', rgba); 
     };
 
     document.getElementById('float-checkbox').onchange = function() {
-        localStorage.setItem('zero_is_floating', this.checked); // Save boolean as string
+        localStorage.setItem('zero_is_floating', this.checked); 
         if (this.checked) {
             applyFloatingStyles(taskbar);
         } else {
@@ -1992,7 +2117,7 @@ bgInput.addEventListener('keydown', function(event) {
 
 else if (type === 'credits') {
         content.innerHTML = `
-            <h2 style="color:white;">Credits</h2><br>
+            <h2 style="color:white;"><i class="fa-solid fa-hand-holding-heart" style="margin-right: 5px;"></i> Credits </h2><br>
             <hr style="border:0; border-top:1px solid #444; margin:20px 0;">
             <ul>
               <li>Credits to gn-math and breadbb for the games in All Games</li>
@@ -2000,6 +2125,8 @@ else if (type === 'credits') {
               <li>Credits to Klash Development and GavinGoGaming for ideas from GlacierOS and for making Glacier</li>
               <br>
               <li>Credits to PrestonPlayz (1.12) and lax1dude (1.5.2, 1.8.8) for Eaglercraft</li>
+              <br>
+              <li>Credits to dinguschan for the github search, previous motivation and tips</li>
               <br>
               <li>Credits to Desmos for the calculator</li>
               <br>
@@ -2020,7 +2147,7 @@ else if (type === 'credits') {
 
     else if (type === 'cloaking') {
     content.innerHTML = `
-        <h2 style="color:white;">Cloaking  <ion-icon name="shield-checkmark-outline"></ion-icon></h2><br>
+        <h2 style="color:white;"><ion-icon name="shield-checkmark-outline" style="margin-right: 5px; width: 30px; height: 30px;"></ion-icon> Cloaking</h2><br>
         <p style="color:gray; font-size:13px; margin-bottom:15px;">Use these tools to disguise your tab as Finite Campus, prevent teachers from seeing your screen on NoGuardian, and block tab from being closed (more info at the setting).</p>
         
         <div onclick="AboutBlank()" class="settingscloak-btn">
@@ -2043,7 +2170,7 @@ else if (type === 'credits') {
                 <span onclick="toggleInfo(event)" style="cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; opacity:0.6; font-size:18px;">&#x1F6C8;</span>
                 <div id="info-popup" style="display:none; position:absolute; bottom:30px; right:0; width:250px; background:#333; border:1px solid #0078D4; padding:10px; border-radius:8px; font-size:12px; z-index:100; box-shadow:0 4px 15px rgba(0,0,0,0.5);">
                     <strong>How to use:</strong><br>
-                    This stops your teachers from closing your tab remotely, or when teacher mode is on (all sites blocked except teacher-selected sites), go on the teacher block page, spam alt+d+enter until everything is really laggy and tabs only show the icon, open zeroOS, turn this setting on ASAP, and as the popups come in to close the tab, always cancel and after a while NoGuardian gives up. You can then browse and play freely!
+                    This stops your teachers from closing your tab remotely, or when Scene mode is on (all sites blocked except teacher-selected sites), go on the Scene block page, spam alt+d+enter until everything is really laggy and tabs only show the icon, open zeroOS, turn this setting on ASAP, and as the popups come in to close the tab, always cancel and after a while NoGuardian gives up. You can then browse and play freely!
                 </div>
             </div>
         </label>
@@ -2052,27 +2179,35 @@ else if (type === 'credits') {
 
     else if (type === 'system') {
         content.innerHTML = `
-            <h2 style="color:white;">System   <ion-icon name="laptop-outline" style="margin-left: 5px;"></ion-icon></h2><br>
+            <h2 style="color:white;"><i class="fa-solid fa-laptop" style="margin-right: 5px"></i> System</h2><br>
             <div style="background:rgba(255,255,255,0.05); padding:15px; border-radius:10px;">
-                <p style="color:white;"><strong>OS Name:</strong> zeroOS</p>
-                <p style="color:gray; font-size:13px;">Build: 1.1.0-beta</p>
-                <p style="color:gray; font-size:13px;">Status: Operational</p>
+                <p style="color:white;"><strong><ion-icon name="pricetag-outline" style="margin-right: 2px;"></ion-icon> OS Name:</strong> zeroOS</p>
+                <p style="color:gray; font-size:13px;"><ion-icon name="hammer-outline" style="margin-right: 2px;"></ion-icon> Build: 1.1.0-beta</p>
+                <p style="color:gray; font-size:13px;"><ion-icon name="trending-up-outline" style="margin-right: 2px;"></ion-icon> Status: Operational</p>
             </div>
+            <br>
+            <h3 style="color: white;"><ion-icon name="download-outline"></ion-icon> Export and import saved data</h3>
+            <br>
+            <div style="display:flex; gap:10px;">
+              <button onclick="exportData()" class="export-btn"><ion-icon name="exit-outline" style="margin-right: 5px; height: 15px; width: 15px;"></ion-icon>Export Backup</button> <!-- "what kinda class is called export-btn what they be learning in there" -kiowa -->
+              <button onclick="importData()" class="export-btn"><ion-icon name="enter-outline" style="margin-right: 5px; height: 15px; width: 15px;"></ion-icon>Import Backup</button>
+            </div>
+
+            <hr style="border:0; border-top:1px solid #444; margin:20px 0;">
+
+            <h3 style="color: white;"><ion-icon name="cloud-download-outline" style="margin-right: 2px;"></ion-icon> Download ZeroOS as offline .html</h3>
+            <br>
+            <button id="dlBtn" class="download-btn" onclick="OfflineDownload()"><i class="fa-solid fa-download" style="margin-right: 5px;"></i>
+              Download ZeroOS Offline
+            </button>
+
+            <hr style="border:0; border-top:1px solid #444; margin:20px 0;">
+
+            <h3 style="color: red;"><ion-icon name="warning-outline" style="margin-right: 5px;"></ion-icon>Danger Zone</h3>
             <br>
             <button onclick="if(confirm('Reset all settings, pinned apps and localstorage data?')){localStorage.clear(); location.reload();}" 
                     class="factory-btn"><ion-icon name="trash-outline" style="margin-right: 5px; height: 15px; width: 15px;"></ion-icon>
                 Factory Reset zeroOS
-            </button>
-            <hr style="border:0; border-top:1px solid #444; margin:20px 0;">
-            <h3 style="color: white;">Export and import saved data</h3>
-            <br>
-            <div style="display:flex; gap:10px;">
-              <button onclick="exportData()" class="export-btn"><ion-icon name="exit-outline" style="margin-right: 5px; height: 15px; width: 15px;"></ion-icon>Export Backup</button>
-              <button onclick="importData()" class="export-btn"><ion-icon name="enter-outline" style="margin-right: 5px; height: 15px; width: 15px;"></ion-icon>Import Backup</button>
-            </div>
-            <hr style="border:0; border-top:1px solid #444; margin:20px 0;">
-            <button id="dlBtn" class="download-btn" onclick="OfflineDownload()"><ion-icon name="cloud-download-outline" style="margin-right: 5px; height: 15px; width: 15px;"></ion-icon>
-              Download ZeroOS Offline
             </button>
         `;
     }
@@ -2179,11 +2314,12 @@ document.addEventListener('mousedown', (e) => {
                     <span style="cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; padding: 5px;" onclick="document.getElementById('custom-app-modal').remove()">✕</span>
                 </div>
                 <div style="padding: 30px;">
-                    <div class="modal-input-group"><input type="text" id="add-name" placeholder="App Name" autocomplete="off"></div>
-                    <div class="modal-input-group"><input type="text" id="add-url" placeholder="App URL (include https)" autocomplete="off"></div>
-                    <div class="modal-input-group"><input type="text" id="add-img" placeholder="Image URL" autocomplete="off"></div>
+                    <div class="modal-input-group"><input style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;" type="text" id="add-name" placeholder="App Name" autocomplete="off"></div>
+                    <div class="modal-input-group"><input style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;" type="text" id="add-url" placeholder="App URL (include https)" autocomplete="off"></div>
+                    <div class="modal-input-group"><input style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;" type="text" id="add-img" placeholder="Image URL" autocomplete="off"></div>
                     <button onclick="CustomAppManager.save('${category}')" 
-                        style="width: 100%; padding: 12px; background: #0078D4; color: white; border: none; border-radius: 6px; font-weight: 600; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;">
+                        class="customcardbtn">
+                        <i class="fa-solid fa-cart-plus" style="margin-right: 5px;"></i>
                         Add to Store
                     </button>
                 </div>
@@ -2274,18 +2410,16 @@ function loadStore(type, btn) {
   const grid = document.getElementById("store-grid");
   grid.innerHTML = "";
 
-const addCard = document.createElement("div");
-addCard.className = "store-item";
-addCard.style = "border: 2px dashed #444; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; aspect-ratio: 1 / 1.2; box-sizing: border-box;";
-addCard.onclick = () => CustomAppManager.open(type); 
+  const addCard = document.createElement("div");
+  addCard.className = "store-item";
+  addCard.style = "border: 2px dashed #444; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; aspect-ratio: 1 / 1.2; box-sizing: border-box;";
+  addCard.onclick = () => CustomAppManager.open(type); 
 
-addCard.innerHTML = `
-    <div style="font-size: 40px; color: #888; pointer-events: none;">+</div>
-    <strong style="color: #888; pointer-events: none;">Add Custom App</strong>
-`;
-grid.appendChild(addCard);
-
-  
+  addCard.innerHTML = `
+      <div style="font-size: 40px; color: #888; pointer-events: none;">+</div>
+      <strong style="color: #888; pointer-events: none;">Add Custom App</strong>
+  `;
+  grid.appendChild(addCard);
 
   storeApps[type].forEach(app => {
     const div = document.createElement("div");
@@ -2298,6 +2432,8 @@ grid.appendChild(addCard);
     `;
     grid.appendChild(div);
   });
+
+  updatePinButtonStates();
 }
 
 
@@ -2306,19 +2442,44 @@ grid.appendChild(addCard);
    ============================ */
 
 function pinApp(name, url, image, btn) {
-  if (pinnedApps.some(app => app.name === name)) return;
-
-  const appData = { name, url, image };
-  pinnedApps.push(appData);
+  const appIndex = pinnedApps.findIndex(app => app.name === name);
+  
+  if (appIndex !== -1) {
+    pinnedApps.splice(appIndex, 1);
+    if (btn) {
+      btn.style.background = "rgba(33, 155, 12, 0.98)";
+      btn.classList.remove("pinned");
+    }
+  } else {
+    const appData = { name, url, image };
+    pinnedApps.push(appData);
+    if (btn) {
+      btn.style.background = "#a00000";
+      btn.classList.add("pinned");
+    }
+  }
 
   localStorage.setItem("zeroos_pinned_apps", JSON.stringify(pinnedApps));
-
   renderPinnedApps();
-
-  if (btn) {
-    btn.style.background = "rgba(255, 0, 0, 0.8)";
-  }
 }
+
+
+function updatePinButtonStates() {
+  const pinnedNames = pinnedApps.map(app => app.name);
+  
+  document.querySelectorAll('.pin-button').forEach(btn => {
+    const itemName = btn.closest('.store-item').querySelector('strong').textContent;
+    
+    if (pinnedNames.includes(itemName)) {
+      btn.style.background = "red";
+      btn.classList.add("pinned");
+    } else {
+      btn.style.background = "rgba(33, 155, 12, 0.98)";
+      btn.classList.remove("pinned");
+    }
+  });
+}
+
 
 
 
@@ -2393,7 +2554,7 @@ function tabCloak() {
                 position: relative;
                 width: 100%;
                 display: flex;
-                cursor: url(https://i.imgur.com/k1SSeLz.png), text!important;
+                cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;
             }
             .search-wrapper::after {
                 content: "";
@@ -2403,14 +2564,16 @@ function tabCloak() {
                 width: 0;
                 height: 2px;
                 background: #0078D4;
+                border-radius: 0 0 4px 4px;
                 transition: width 0.3s ease, left 0.3s ease;
                 pointer-events: none;
-                cursor: url(https://i.imgur.com/k1SSeLz.png), text!important;
+                cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;
             }
             .search-wrapper:focus-within::after {
                 width: 100%;
                 left: 0;
-                cursor: url(https://i.imgur.com/k1SSeLz.png), text!important;
+                border-radius: 0 0 4px 4px;
+                cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;
             }
             .settings-section:hover {
                 background: rgba(255, 255, 255, 0.05) !important;
@@ -2451,7 +2614,7 @@ function tabCloak() {
                 <div style="margin-bottom: 5px; width: 100%; padding-right: 10px;">
                     <div class="search-wrapper">
                         <input type="text" placeholder="Find a setting" 
-                               style="width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid #757575; border-radius: 4px; padding: 7px 10px; color: #ccc; font-size: 13px; outline: none;">
+                               style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important; width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid #757575; border-radius: 4px; padding: 7px 10px; color: #ccc; font-size: 13px; outline: none;">
                     </div>
                 </div>
                 <button class="settings-section" onclick="loadSettings('system', this)" style="width:100%; text-align:left; font-size:13px; margin-bottom:4px; padding: 8px 10px; border-radius: 5px; background: transparent; display: flex; align-items: center; gap: 12px; border: none; color: white; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;">
@@ -2500,7 +2663,7 @@ function OpenCloaking() {
                 position: relative;
                 width: 100%;
                 display: flex;
-                cursor: url(https://i.imgur.com/k1SSeLz.png), text!important;
+                cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;
             }
             .search-wrapper::after {
                 content: "";
@@ -2512,12 +2675,12 @@ function OpenCloaking() {
                 background: #0078D4;
                 transition: width 0.3s ease, left 0.3s ease;
                 pointer-events: none;
-                cursor: url(https://i.imgur.com/k1SSeLz.png), text!important;
+                border-radius: 0 0 4px 4px;
             }
             .search-wrapper:focus-within::after {
                 width: 100%;
                 left: 0;
-                cursor: url(https://i.imgur.com/k1SSeLz.png), text!important;
+                border-radius: 0 0 4px 4px;
             }
             .settings-section:hover {
                 background: rgba(255, 255, 255, 0.05) !important;
@@ -2558,7 +2721,7 @@ function OpenCloaking() {
                 <div style="margin-bottom: 5px; width: 100%; padding-right: 10px;">
                     <div class="search-wrapper">
                         <input type="text" placeholder="Find a setting" 
-                               style="width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid #757575; border-radius: 4px; padding: 7px 10px; color: #ccc; font-size: 13px; outline: none;">
+                               style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important; width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid #757575; border-radius: 4px; padding: 7px 10px; color: #ccc; font-size: 13px; outline: none;">
                     </div>
                 </div>
                 <button class="settings-section" onclick="loadSettings('system', this)" style="width:100%; text-align:left; font-size:13px; margin-bottom:4px; padding: 8px 10px; border-radius: 5px; background: transparent; display: flex; align-items: center; gap: 12px; border: none; color: white; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;">
@@ -2646,11 +2809,13 @@ async function OfflineDownload() {
         link.click();
         document.body.removeChild(link);
         window.URL.revokeObjectURL(downloadUrl);
+        
+        alert("This may be a very outdated version of ZeroOS as i'm too lazy to update the Github for the site. If you want the most recent version, go to the p5js site and download the code as an html file: https://editor.p5js.org/peperpernoperi/sketches/hS3eHXa1a");
 
         btn.innerText = 'Download completed, open file from your recent downloads folder';
     } catch (error) {
         console.error('Download failed:', error);
-        btn.innerText = 'Error Downloading';
+        btn.innerText = 'Error Downloading srry';
     } finally {
         setTimeout(() => {
             btn.disabled = false;
@@ -2737,6 +2902,7 @@ function createLoader() {
 document.addEventListener('contextmenu', e => {
 
   
+  // 1. Create or Get the Menu
   let menu = document.getElementById('custom-ctx');
   if (!menu) {
     menu = document.createElement('div');
@@ -2771,7 +2937,7 @@ document.addEventListener('contextmenu', e => {
     <div onclick="OpenPersonalize()" class="ctx-item" style="${itemStyle}"><ion-icon name="brush-outline"></ion-icon>Personalize</div>
     <div onclick="OpenCloaking()" class="ctx-item" style="${itemStyle}"><img src="https://i.imgur.com/YVO5743.png" style="width: 15px; height: 14px;">Cloak</div>
     <div onclick="openStore()" class="ctx-item" style="${itemStyle}"><ion-icon name="add-outline"></ion-icon>Find Apps</div>
-    <div onclick="toggleStartMenu(event)" class="ctx-item" style="${itemStyle}"><ion-icon name="search-outline"></ion-icon>Search</div>
+    <div onclick="toggleSearchMenu(event)" class="ctx-item" style="${itemStyle}"><ion-icon name="search-outline"></ion-icon>Search</div>
     ${separator}
     <div onclick="window.location.reload()" class="ctx-item" style="${itemStyle}"><ion-icon name="reload-outline"></ion-icon>Restart ZeroOS</div>
   `;
@@ -2793,10 +2959,844 @@ document.addEventListener('contextmenu', e => {
 document.addEventListener('click', () => document.getElementById('custom-ctx')?.remove());
 // added blur
 
+// terminal (useless)
+function OpenTerminal() {
+    if (openWindows["Terminal"]) {
+        openWindows["Terminal"].style.zIndex = z++;
+        return;
+    }
+
+    const win = document.createElement("div");
+    win.className = "window";
+    win.dataset.maximized = "false";
+    win.style.top = "80px";
+    win.style.left = "200px";
+    win.style.zIndex = z++;
+    win.style.backgroundColor = "#000"; 
+
+    win.innerHTML = `
+        <div class="title-bar" style="background: #1a1a1a; color: #d3d3d3; border-bottom: 1px solid #333;">
+            <span>zeroOS Terminal</span>
+            <div class="maximize-button" onclick="toggleMaximize('Terminal')"><img src="https://i.imgur.com/iigug37.png"></div>
+            <div style="cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; color: #d3d3d3;" onclick="closeWindow(this.parentElement.parentElement,'Terminal')">✕</div>
+        </div>
+        <div class="window-content" id="terminal-container" style="height: calc(100% - 36px); overflow: hidden; background: #000;"></div>
+    `;
+
+    document.getElementById("desktop").appendChild(win);
+    openWindows["Terminal"] = win;
+    makeWindowDraggable(win);
+    win.classList.add("open");
+    
+    new TerminalEmulator('terminal-container');
+}      
+      
+class TerminalEmulator {
+    constructor(containerId) {
+        this.container = document.getElementById(containerId);
+        this.history = [];
+        this.historyIndex = -1;
+        this.currentInput = '';
+        this.fileSystem = this.initializeFileSystem();
+        this.currentPath = '/home/user';
+        this.init();
+    }
+
+    init() {
+        this.container.innerHTML = `
+            <div id="terminal-output" style="
+                width: 100%;
+                height: calc(100% - 45px);
+                overflow-y: auto;
+                padding: 15px;
+                font-family: 'Courier New', monospace;
+                font-size: 13px;
+                color: #d3d3d3;
+                background: #000;
+                border-bottom: 1px solid #333;
+            "></div>
+            <div id="terminal-input-line" style="
+                display: flex;
+                padding: 10px 15px;
+                background: #000;
+                color: #d3d3d3;
+                font-family: 'Courier New', monospace;
+                font-size: 13px;
+            ">
+                <span id="terminal-prompt">user@zeroOS:${this.currentPath}$ </span>
+                <input type="text" id="terminal-input" autofocus style="
+                    cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    color: #d3d3d3;
+                    font-family: 'Courier New', monospace;
+                    font-size: 13px;
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+                " />
+            </div>
+        `;
+
+        this.output = document.getElementById('terminal-output');
+        this.input = document.getElementById('terminal-input');
+        this.prompt = document.getElementById('terminal-prompt');
+
+        this.print('Welcome to zeroOS Terminal v1.0\n');
+        this.print('Type "help" for available commands\n\n');
+
+        this.input.addEventListener('keydown', (e) => this.handleKeyDown(e));
+        this.input.addEventListener('keyup', (e) => this.handleKeyUp(e));
+    }
+
+    initializeFileSystem() {
+        return {
+            '/': {
+                'home': {
+                    'user': {
+                        'documents': {},
+                        'downloads': {},
+                        'desktop': {},
+                        'readme.txt': 'Welcome to zeroOS!'
+                    }
+                },
+                'bin': {},
+                'usr': {},
+                'var': {},
+                'tmp': {}
+            }
+        };
+    }
+
+    handleKeyDown(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const command = this.input.value.trim();
+            this.executeCommand(command);
+            this.input.value = '';
+            this.currentInput = '';
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            this.historyIndex++;
+            if (this.historyIndex >= this.history.length) {
+                this.historyIndex = this.history.length - 1;
+            }
+            this.input.value = this.history[this.history.length - 1 - this.historyIndex] || '';
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            this.historyIndex--;
+            if (this.historyIndex < 0) {
+                this.historyIndex = -1;
+                this.input.value = '';
+            } else {
+                this.input.value = this.history[this.history.length - 1 - this.historyIndex];
+            }
+        } else if (e.key === 'Tab') {
+            e.preventDefault();
+            this.autocomplete();
+        }
+    }
+
+    handleKeyUp(e) {
+        this.currentInput = this.input.value;
+    }
+
+    executeCommand(cmd) {
+        if (!cmd) return;
+
+        this.print(`<span style="color: #d3d3d3;">${this.prompt.textContent}${cmd}</span>\n`);
+        this.history.push(cmd);
+        this.historyIndex = -1;
+
+        const [command, ...args] = cmd.split(' ');
+        const lowerCmd = command.toLowerCase();
+
+        const commands = {
+            'help': () => this.cmdHelp(),
+            'clear': () => this.cmdClear(),
+            'ls': () => this.cmdLS(args),
+            'pwd': () => this.cmdPWD(),
+            'cd': () => this.cmdCD(args),
+            'echo': () => this.cmdEcho(args),
+            'cat': () => this.cmdCAT(args),
+            'mkdir': () => this.cmdMKDIR(args),
+            'touch': () => this.cmdTOUCH(args),
+            'rm': () => this.cmdRM(args),
+            'date': () => this.cmdDate(),
+            'whoami': () => this.cmdWhoami(),
+            'uname': () => this.cmdUname(),
+            'system': () => this.cmdSystem(),
+            'neofetch': () => this.cmdNeofetch(),
+            'fortune': () => this.cmdFortune(),
+            'calc': () => this.cmdCalc(args),
+            'ip': () => this.cmdIP(),
+            'weather': () => this.cmdWeather(args),
+            'banner': () => this.cmdBanner(),
+            'matrix': () => this.cmdMatrix(),
+        };
+
+        if (commands[lowerCmd]) {
+            commands[lowerCmd]();
+        } else {
+            this.print(`<span style="color: #f00;">Command not found: ${command}</span>\n`);
+            this.print(`Type "help" for available commands\n`);
+        }
+
+        this.output.scrollTop = this.output.scrollHeight;
+    }
+
+    cmdHelp() {
+        const helpText = `
+Available Commands:
+  help              - Show this help message
+  clear             - Clear the terminal
+  ls [path]         - List files in directory
+  pwd               - Print working directory
+  cd [path]         - Change directory
+  echo [text]       - Print text
+  cat [file]        - Read file contents
+  mkdir [name]      - Create directory
+  touch [name]      - Create empty file
+  rm [name]         - Delete file
+  date              - Show current date/time
+  whoami            - Show current user
+  uname             - Show system information
+  system            - Show system info
+  neofetch          - Show fancy system info
+  fortune           - Random quote
+  calc [expression] - Simple calculator
+  ip                - Show IP info
+  weather [city]    - Get weather (requires API)
+  banner            - Show zeroOS banner
+  matrix            - Matrix rain effect
+`;
+        this.print(helpText + '\n');
+    }
+
+    cmdClear() {
+        this.output.innerHTML = '';
+    }
+
+    cmdLS(args) {
+        const path = args[0] || this.currentPath;
+        this.print(`Files in ${path}:\n`);
+        this.print('  .\n  ..\n  documents/\n  downloads/\n  desktop/\n  readme.txt\n\n');
+    }
+
+    cmdPWD() {
+        this.print(this.currentPath + '\n\n');
+    }
+
+    cmdCD(args) {
+        if (!args[0]) {
+            this.currentPath = '/home/user';
+        } else if (args[0] === '..') {
+            const parts = this.currentPath.split('/').filter(p => p);
+            parts.pop();
+            this.currentPath = '/' + parts.join('/');
+        } else if (args[0].startsWith('/')) {
+            this.currentPath = args[0];
+        } else {
+            this.currentPath += '/' + args[0];
+        }
+        this.updatePrompt();
+        this.print('\n');
+    }
+
+    cmdEcho(args) {
+        this.print(args.join(' ') + '\n\n');
+    }
+
+    cmdCAT(args) {
+        if (!args[0]) {
+            this.print('<span style="color: #f00;">cat: missing file</span>\n\n');
+            return;
+        }
+        this.print(`Contents of ${args[0]}:\nWelcome to zeroOS!\n\n`);
+    }
+
+    cmdMKDIR(args) {
+        if (!args[0]) {
+            this.print('<span style="color: #f00;">mkdir: missing directory name</span>\n\n');
+            return;
+        }
+        this.print(`<span style="color: #d3d3d3;">Directory "${args[0]}" created</span>\n\n`);
+    }
+
+    cmdTOUCH(args) {
+        if (!args[0]) {
+            this.print('<span style="color: #f00;">touch: missing filename</span>\n\n');
+            return;
+        }
+        this.print(`<span style="color: #d3d3d3;">File "${args[0]}" created</span>\n\n`);
+    }
+
+    cmdRM(args) {
+        if (!args[0]) {
+            this.print('<span style="color: #f00;">rm: missing file</span>\n\n');
+            return;
+        }
+        this.print(`<span style="color: #d3d3d3;">"${args[0]}" removed</span>\n\n`);
+    }
+
+    cmdDate() {
+        this.print(new Date().toString() + '\n\n');
+    }
+
+    cmdWhoami() {
+        this.print('Zero User\n\n');
+    }
+
+    cmdUname() {
+        this.print('zeroOS 1.0 (Browser-based) x86_64\n\n');
+    }
+
+    cmdSystem() {
+        this.print(`
+System Information:
+  OS: zeroOS v1.1.0
+  Kernel: Browser (${navigator.userAgent.split('(')[1].split(')')[0]})
+  Hostname: zeroOS
+  User: Zero User
+  Uptime: ${Math.floor(performance.now() / 1000)}s
+\n`);
+    }
+
+    cmdNeofetch() {
+        this.print(`
+     .___.
+    |o_o|  zeroOS 1.0
+    |:_/|  Browser-based OS
+    //   \\\\ Architecture: Web
+   (|     |) CPU: ${navigator.hardwareConcurrency || 'Unknown'} cores
+  /'\\\_/'\\\\ RAM: ${navigator.deviceMemory || 'Unknown'}GB
+            
+\n`);
+    }
+
+    cmdFortune() {
+        const fortunes = [
+            'The best time to plant a tree was 20 years ago. The second best time is now.',
+            'It only seems impossible until you do it.',
+            'Itll be over soon, dont worry.',
+            'You are about to make a great discovery.',
+            'Life is like riding a bicycle. To keep your balance, you must keep moving.',
+        ];
+        this.print(fortunes[Math.floor(Math.random() * fortunes.length)] + '\n\n');
+    }
+
+    cmdCalc(args) {
+        if (!args[0]) {
+            this.print('<span style="color: #f00;">calc: missing expression</span>\n\n');
+            return;
+        }
+        try {
+            const expr = args.join(' ').replace(/x/g, '*');
+            const result = eval(expr);
+            this.print(`${expr} = ${result}\n\n`);
+        } catch (e) {
+            this.print(`<span style="color: #f00;">calc: invalid expression</span>\n\n`);
+        }
+    }
+
+    cmdIP() {
+        this.print(`
+IP Information:
+  IPv4: 192.168.1.1
+  IPv6: ::1
+  Status: Connected
+\n`);
+    }
+
+    cmdWeather(args) {
+        const city = args[0] || 'unknown';
+        this.print(`Weather for ${city}: Unable to fetch (API unavailable)\n\n`);
+    }
+
+    cmdBanner() {
+        this.print(`
+        ╔═══════════════════════════════════════╗
+        ║                                       ║
+        ║         Welcome to zeroOS v1.10       ║
+        ║      A Browser-based Operating OS     ║
+        ║                                       ║
+        ╚═══════════════════════════════════════╝
+\n`);
+    }
+
+    cmdMatrix() {
+        this.print('Matrix mode not available in terminal\n\n');
+    }
+
+    autocomplete() {
+        const commands = ['help', 'clear', 'ls', 'pwd', 'cd', 'echo', 'cat', 'mkdir', 'touch', 'rm', 'date', 'whoami'];
+        const input = this.input.value.toLowerCase();
+        
+        const matches = commands.filter(cmd => cmd.startsWith(input));
+        if (matches.length === 1) {
+            this.input.value = matches[0];
+        }
+    }
+
+    updatePrompt() {
+        this.prompt.textContent = `user@zeroOS:${this.currentPath}$ `;
+    }
+
+    print(text) {
+        const line = document.createElement('div');
+        line.innerHTML = text;
+        this.output.appendChild(line);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const terminalContainer = document.getElementById('terminal-container');
+    if (terminalContainer) {
+        new TerminalEmulator('terminal-container');
+    }
+});
+      
+      // file explorer ts sucks
+class FileExplorer {
+    constructor() {
+        this.currentPath = "/home/user";
+        this.navigationHistory = ["/home/user"];
+        this.historyIndex = 0;
+        
+        this.fileSystem = {
+            "/": {
+                type: "folder",
+                name: "This PC",
+                icon: "🖥️"
+            },
+            "/home": {
+                type: "folder",
+                name: "home"
+            },
+            "/home/user": {
+                type: "folder",
+                name: "user",
+                children: {
+                    "Desktop": { type: "folder", name: "Desktop", icon: "📑" },
+                    "Downloads": { type: "folder", name: "Downloads", icon: "📥" },
+                    "Documents": { type: "folder", name: "Documents", icon: "📄" },
+                    "Pictures": { type: "folder", name: "Pictures", icon: "🖼️" },
+                    "Videos": { type: "folder", name: "Videos", icon: "🎬" },
+                    "Music": { type: "folder", name: "Music", icon: "🎵" },
+                }
+            },
+            "/home/user/Desktop": {
+                type: "folder",
+                name: "Desktop",
+                children: {
+                    "zeroOS Shortcut.lnk": { type: "file", name: "zeroOS Shortcut.lnk", icon: "🔗", size: "1 KB", modified: "Today" },
+                    "Settings.lnk": { type: "file", name: "Settings.lnk", icon: "⚙️", size: "2 KB", modified: "Today" },
+                }
+            },
+            "/home/user/Downloads": {
+                type: "folder",
+                name: "Downloads",
+                children: {
+                    "File1.zip": { type: "file", name: "File1.zip", icon: "📦", size: "250 MB", modified: "2 days ago" },
+                    "Document.pdf": { type: "file", name: "Document.pdf", icon: "📃", size: "5 MB", modified: "1 week ago" },
+                    "Image.jpg": { type: "file", name: "Image.jpg", icon: "🖼️", size: "8 MB", modified: "2 weeks ago" },
+                }
+            },
+            "/home/user/Documents": {
+                type: "folder",
+                name: "Documents",
+                children: {
+                    "Resume.docx": { type: "file", name: "Resume.docx", icon: "📝", size: "150 KB", modified: "Today" },
+                    "Notes.txt": { type: "file", name: "Notes.txt", icon: "📄", size: "25 KB", modified: "Yesterday" },
+                    "Project_Proposal.pdf": { type: "file", name: "Project_Proposal.pdf", icon: "📊", size: "3 MB", modified: "3 days ago" },
+                }
+            },
+            "/home/user/Pictures": {
+                type: "folder",
+                name: "Pictures",
+                children: {
+                    "Screenshot_001.png": { type: "file", name: "Screenshot_001.png", icon: "🖼️", size: "2 MB", modified: "Today" },
+                    "Vacation.jpg": { type: "file", name: "Vacation.jpg", icon: "🖼️", size: "5 MB", modified: "1 week ago" },
+                    "Profile.jpg": { type: "file", name: "Profile.jpg", icon: "👤", size: "3 MB", modified: "2 weeks ago" },
+                }
+            },
+            "/home/user/Videos": {
+                type: "folder",
+                name: "Videos",
+                children: {
+                    "Tutorial.mp4": { type: "file", name: "Tutorial.mp4", icon: "🎬", size: "150 MB", modified: "5 days ago" },
+                    "Gameplay.webm": { type: "file", name: "Gameplay.webm", icon: "🎮", size: "200 MB", modified: "1 week ago" },
+                }
+            },
+            "/home/user/Music": {
+                type: "folder",
+                name: "Music",
+                children: {
+                    "Song1.mp3": { type: "file", name: "Song1.mp3", icon: "🎵", size: "8 MB", modified: "2 days ago" },
+                    "Song2.mp3": { type: "file", name: "Song2.mp3", icon: "🎵", size: "7 MB", modified: "3 days ago" },
+                    "Playlist": { type: "folder", name: "Playlist", icon: "🎼" },
+                }
+            },
+        };
+    }
+
+    openWindow() {
+        if (openWindows["File Explorer"]) {
+            openWindows["File Explorer"].style.zIndex = z++;
+            return;
+        }
+
+        const win = document.createElement("div");
+        win.className = "window";
+        win.dataset.maximized = "false";
+        win.style.top = "60px";
+        win.style.left = "150px";
+        win.style.width = "950px";
+        win.style.height = "600px";
+        win.style.zIndex = z++;
+        win.style.backgroundColor = "#1a1a1a";
+
+        win.innerHTML = `
+            <div class="title-bar" style="background: #202020; border-bottom: 1px solid #333;">
+                <span>File Explorer</span>
+                <div class="maximize-button" onclick="toggleMaximize('File Explorer')"><img src="https://i.imgur.com/iigug37.png"></div>
+                <div style="cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;" onclick="closeWindow(this.parentElement.parentElement,'File Explorer')">✕</div>
+            </div>
+            <div class="window-content" style="display: flex; height: calc(100% - 36px); background: #1a1a1a; overflow: hidden;">
+                <!-- Sidebar -->
+                <div style="width: 280px; background: #2d2d2d; border-right: 1px solid #3d3d3d; padding: 16px 0; overflow-y: auto;">
+                    <div style="padding: 0 12px; margin-bottom: 24px;">
+                        <div onclick="window.fileExplorer.navigateTo('/'); window.fileExplorer.refresh();" style="padding: 8px 12px; border-radius: 6px; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; color: #d3d3d3; font-size: 14px; display: flex; align-items: center; gap: 12px; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+                            <span style="font-size: 18px;">🖥️</span>
+                            <span>This PC</span>
+                        </div>
+                    </div>
+
+                    <div style="padding: 0 12px; margin-bottom: 8px;">
+                        <span style="font-size: 12px; color: #888; text-transform: uppercase; font-weight: 600; padding: 0 12px; display: block; margin-bottom: 8px;">Quick Access</span>
+                    </div>
+
+                    <div id="sidebar-items" style="padding: 0 8px;">
+                        <div onclick="window.fileExplorer.navigateTo('/home/user/Desktop'); window.fileExplorer.refresh();" style="padding: 8px 12px; border-radius: 6px; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; color: #d3d3d3; font-size: 14px; display: flex; align-items: center; gap: 12px; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+                            <span>📑</span> Desktop
+                        </div>
+                        <div onclick="window.fileExplorer.navigateTo('/home/user/Downloads'); window.fileExplorer.refresh();" style="padding: 8px 12px; border-radius: 6px; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; color: #d3d3d3; font-size: 14px; display: flex; align-items: center; gap: 12px; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+                            <span>📥</span> Downloads
+                        </div>
+                        <div onclick="window.fileExplorer.navigateTo('/home/user/Documents'); window.fileExplorer.refresh();" style="padding: 8px 12px; border-radius: 6px; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; color: #d3d3d3; font-size: 14px; display: flex; align-items: center; gap: 12px; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+                            <span>📄</span> Documents
+                        </div>
+                        <div onclick="window.fileExplorer.navigateTo('/home/user/Pictures'); window.fileExplorer.refresh();" style="padding: 8px 12px; border-radius: 6px; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; color: #d3d3d3; font-size: 14px; display: flex; align-items: center; gap: 12px; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+                            <span>🖼️</span> Pictures
+                        </div>
+                        <div onclick="window.fileExplorer.navigateTo('/home/user/Videos'); window.fileExplorer.refresh();" style="padding: 8px 12px; border-radius: 6px; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; color: #d3d3d3; font-size: 14px; display: flex; align-items: center; gap: 12px; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+                            <span>🎬</span> Videos
+                        </div>
+                        <div onclick="window.fileExplorer.navigateTo('/home/user/Music'); window.fileExplorer.refresh();" style="padding: 8px 12px; border-radius: 6px; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; color: #d3d3d3; font-size: 14px; display: flex; align-items: center; gap: 12px; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
+                            <span>🎵</span> Music
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div style="flex: 1; display: flex; flex-direction: column; background: #1a1a1a;">
+                    <!-- Toolbar -->
+                    <div style="padding: 12px 20px; border-bottom: 1px solid #333; background: #202020; display: flex; align-items: center; gap: 12px;">
+                        <button onclick="window.fileExplorer.goBack();" style="width: 36px; height: 36px; border-radius: 6px; background: rgba(255,255,255,0.05); border: none; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; color: #d3d3d3; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><ion-icon name="arrow-back-outline"></ion-icon></button>
+                        <button onclick="window.fileExplorer.goForward();" style="width: 36px; height: 36px; border-radius: 6px; background: rgba(255,255,255,0.05); border: none; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; color: #d3d3d3; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><ion-icon name="arrow-forward-outline"></ion-icon></button>
+                        <button onclick="window.fileExplorer.refresh();" style="width: 36px; height: 36px; border-radius: 6px; background: rgba(255,255,255,0.05); border: none; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; color: #d3d3d3; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><ion-icon name="refresh-outline"></ion-icon></button>
+                        
+                        <div style="flex: 1; display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 6px; padding: 0 12px; border: 1px solid rgba(255,255,255,0.1);">
+                            <span style="color: #888; margin-right: 8px;">📁</span>
+                            <input type="text" id="address-bar" placeholder="Files" readonly style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important; background: transparent; border: none; outline: none; color: #d3d3d3; flex: 1; font-size: 13px; cursor: url(https://i.imgur.com/MXhbAGY.png), default!important;" />
+                        </div>
+
+                        <div class="search-wrapper" style="display: flex; align-items: center; gap: 8px;">
+                            <input type="text" placeholder="Search Files" style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important; width: 200px; padding: 8px 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #d3d3d3; outline: none; font-size: 13px;" onkeyup="window.fileExplorer.search(this.value)" />
+                        </div>
+                    </div>
+
+                    <!-- File View -->
+                    <div id="file-view" style="flex: 1; padding: 20px; overflow-y: auto; background: #1a1a1a;">
+                        <!-- Files will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.getElementById("desktop").appendChild(win);
+        openWindows["File Explorer"] = win;
+        makeWindowDraggable(win);
+        win.classList.add("open");
+        
+        window.fileExplorer = this;
+        this.refresh();
+    }
+
+    navigateTo(path) {
+        this.currentPath = path;
+        this.navigationHistory = this.navigationHistory.slice(0, this.historyIndex + 1);
+        this.navigationHistory.push(path);
+        this.historyIndex = this.navigationHistory.length - 1;
+        document.getElementById("address-bar").value = path === "/" ? "This PC" : path.split("/").pop();
+    }
+
+    goBack() {
+        if (this.historyIndex > 0) {
+            this.historyIndex--;
+            this.currentPath = this.navigationHistory[this.historyIndex];
+            this.refresh();
+        }
+    }
+
+    goForward() {
+        if (this.historyIndex < this.navigationHistory.length - 1) {
+            this.historyIndex++;
+            this.currentPath = this.navigationHistory[this.historyIndex];
+            this.refresh();
+        }
+    }
+
+    refresh() {
+        const fileView = document.getElementById("file-view");
+        const currentFolder = this.fileSystem[this.currentPath];
+        
+        fileView.innerHTML = "";
+
+        if (!currentFolder || !currentFolder.children) {
+            fileView.innerHTML = '<div style="color: #888; padding: 20px; text-align: center;">This folder is empty</div>';
+            return;
+        }
+
+        const items = Object.values(currentFolder.children);
+
+        items.forEach((item, index) => {
+            const itemEl = document.createElement("div");
+            itemEl.style = `
+                padding: 12px;
+                border-radius: 6px;
+                cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: #d3d3d3;
+                font-size: 13px;
+                transition: all 0.2s;
+                border: 1px solid transparent;
+            `;
+
+            itemEl.onmouseover = () => {
+                itemEl.style.background = "rgba(255,255,255,0.08)";
+                itemEl.style.borderColor = "rgba(255,255,255,0.1)";
+            };
+
+            itemEl.onmouseout = () => {
+                itemEl.style.background = "transparent";
+                itemEl.style.borderColor = "transparent";
+            };
+
+            const sizeModified = item.type === "file" 
+                ? `<span style="flex: 1; text-align: right; color: #888;">${item.size}</span><span style="width: 120px; text-align: right; color: #888;">${item.modified}</span>`
+                : `<span style="flex: 1;"></span>`;
+
+            itemEl.innerHTML = `
+                <span style="font-size: 20px;">${item.icon || (item.type === "folder" ? "📁" : "📄")}</span>
+                <span style="min-width: 200px;">${item.name}</span>
+                ${sizeModified}
+            `;
+
+            if (item.type === "folder") {
+                itemEl.onclick = () => {
+                    const newPath = this.currentPath === "/" 
+                        ? "/" + item.name 
+                        : this.currentPath + "/" + item.name;
+                    this.navigateTo(newPath);
+                    this.refresh();
+                };
+            } else {
+                itemEl.onclick = () => {
+                    console.log(`Opening: ${item.name}`);
+                };
+            }
+
+            fileView.appendChild(itemEl);
+        });
+
+        document.getElementById("address-bar").value = this.currentPath === "/" ? "This PC" : this.currentPath.split("/").pop();
+    }
+
+    search(query) {
+        if (!query) {
+            this.refresh();
+            return;
+        }
+
+        const fileView = document.getElementById("file-view");
+        const currentFolder = this.fileSystem[this.currentPath];
+        
+        fileView.innerHTML = "";
+
+        if (!currentFolder || !currentFolder.children) return;
+
+        const items = Object.values(currentFolder.children).filter(item =>
+            item.name.toLowerCase().includes(query.toLowerCase())
+        );
+
+        if (items.length === 0) {
+            fileView.innerHTML = '<div style="color: #888; padding: 20px;">No files found</div>';
+            return;
+        }
+
+        items.forEach(item => {
+            const itemEl = document.createElement("div");
+            itemEl.style = `
+                padding: 12px;
+                border-radius: 6px;
+                cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: #d3d3d3;
+                font-size: 13px;
+                transition: all 0.2s;
+                border: 1px solid transparent;
+            `;
+
+            itemEl.onmouseover = () => {
+                itemEl.style.background = "rgba(255,255,255,0.08)";
+                itemEl.style.borderColor = "rgba(255,255,255,0.1)";
+            };
+
+            itemEl.onmouseout = () => {
+                itemEl.style.background = "transparent";
+                itemEl.style.borderColor = "transparent";
+            };
+
+            itemEl.innerHTML = `
+                <span style="font-size: 20px;">${item.icon || (item.type === "folder" ? "📁" : "📄")}</span>
+                <span>${item.name}</span>
+            `;
+
+            if (item.type === "folder") {
+                itemEl.onclick = () => {
+                    const newPath = this.currentPath === "/" 
+                        ? "/" + item.name 
+                        : this.currentPath + "/" + item.name;
+                    this.navigateTo(newPath);
+                    this.refresh();
+                };
+            }
+
+            fileView.appendChild(itemEl);
+        });
+    }
+}
+
+const autoDesktopApps = [
+    { name: "VS Code", url: "https://bluetidestack.github.io/ht.mlfork/index.html", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/960px-Visual_Studio_Code_1.35_icon.svg.png" },
+    { name: "Settings", url: "#", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Windows_Settings_icon.svg/960px-Windows_Settings_icon.svg.png" },
+    { name: "gn-math", url: "https://st0ck.pythonanywhere.com", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
+];
+
+function renderAutoDesktopApps() {
+    const desktop = document.getElementById("desktop");
+    
+    autoDesktopApps.forEach(app => {
+        // Check if already exists
+        if (document.querySelector(`[data-app="${app.name}"]`)) return;
+
+        const icon = document.createElement("div");
+        icon.className = "desktop-icon";
+        icon.dataset.app = app.name;
+
+        icon.innerHTML = `
+            <img src="${app.image}">
+            <span>${app.name}</span>
+        `;
+
+        if (app.url === "#") {
+            icon.onclick = () => openSettings();
+        } else if (app.url === "") {
+          // idk what app to use man
+        }
+        else {
+            icon.onclick = () => openApp(app.name, app.url);
+        }
+
+        desktop.appendChild(icon);
+    });
+}
 
 
+//panic key
+let panicKey = localStorage.getItem('panicKey') || ']';
+        let panicURL = localStorage.getItem('panicURL') || 'https://google.com';
+        let panicKeyActive = true;
+        
+        document.getElementById('current-panic-key').textContent = panicKey;
+        document.getElementById('panic-url').value = panicURL;
+        
+        const changePanicKeyBtn = document.getElementById('change-panic-key-btn');
+        const listeningStatus = document.getElementById('listening-status');
+        
+        changePanicKeyBtn.addEventListener('click', function() {
+            listeningStatus.textContent = "Listening for key press...";
+            
+            const keyListener = function(e) {
+                panicKey = e.key;
+                document.getElementById('current-panic-key').textContent = panicKey;
+                listeningStatus.textContent = "Key set successfully!";
+                
+                document.removeEventListener('keydown', keyListener);
+                
+                setTimeout(() => {
+                    listeningStatus.textContent = "";
+                }, 2000);
+            };
+            
+            document.addEventListener('keydown', keyListener);
+        });
+        
+        function savePanicSettings() {
+            panicURL = document.getElementById('panic-url').value;
+            
+            if (panicURL && !panicURL.startsWith('http://') && !panicURL.startsWith('https://')) {
+                panicURL = 'https://' + panicURL;
+                document.getElementById('panic-url').value = panicURL;
+            }
+            
+            localStorage.setItem('panicKey', panicKey);
+            localStorage.setItem('panicURL', panicURL);
+            
+            const panicStatus = document.getElementById('panic-status');
+            panicStatus.textContent = "Settings saved successfully!";
+            
+            setTimeout(() => {
+                panicStatus.textContent = "Panic key is active";
+            }, 2000);
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (panicKeyActive && e.key === panicKey) {
+                window.location.href = panicURL;
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('panicKey')) {
+                panicKey = localStorage.getItem('panicKey');
+                document.getElementById('current-panic-key').textContent = panicKey;
+            }
+            
+            if (localStorage.getItem('panicURL')) {
+                panicURL = localStorage.getItem('panicURL');
+                document.getElementById('panic-url').value = panicURL;
+            }
+        });
 
 renderPinnedApps(); // this has to always be at the bottom or else js breaks
+renderAutoDesktopApps(); // this as well
 </script>
 
 
@@ -2805,4 +3805,3 @@ renderPinnedApps(); // this has to always be at the bottom or else js breaks
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>   
-
