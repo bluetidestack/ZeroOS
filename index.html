@@ -1,3 +1,5 @@
+
+
 <!-- cm]=c mmmmmmmmmmmmmmm -->
 <!DOCTYPE html>
 <html lang="en">
@@ -134,7 +136,7 @@ html, body {
 }
 
 .taskbar-icon img:active {
-  transform: scale(0.9);
+  transform: scale(0.85);
 }
 
 /* ===================== START MENU ===================== */
@@ -525,6 +527,25 @@ html, body {
 
 .settingscloak-btn:hover {
     background-color: rgba(0, 120, 212, 0.3);
+}
+
+.settingscloak-btn-blob {
+  width: 100%; 
+  margin-bottom: 12px; 
+  height: 40px;
+  border-radius: 6px;
+  border: 2px solid rgba(204, 204, 204, 0.3);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+.settingscloak-btn-blob:hover {
+    background-color: rgba(200, 200, 200, 0.3);
 }
 
 .settings-section {
@@ -935,6 +956,38 @@ html, body {
 .customcardbtn:hover {
     background: #0078D4;
 }
+
+.favicon {
+    padding: 0px 0px;
+    margin: 5px;
+    border: none;
+    cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;
+    display: inline-flex;
+    align-items: center;
+    background-color: #000; 
+    border-radius: 10px;
+    outline: none;
+}
+
+.favicon img {
+    width: 30px;
+    height: 30px;
+    outline: none;
+    background-color: #fff;
+    padding: 7px 8px;
+    border-radius: 10px;  
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.favicon img:hover {
+    background-color: #cccccc;
+    transform: scale(1.05);
+}
+
+.favicon img:active {
+    background-color: #999999;
+    transform: scale(0.95);
+}
   </style>
 </head>
 <body oncontextmenu="return false;">
@@ -962,8 +1015,8 @@ html, body {
     </div>
     
     <!-- search -->
-    <div class="taskbar-icon" id="taskbar-search-icon" onclick="toggleSearchMenu(event)">
-      <img src="https://i.imgur.com/2DDJj2G.png">
+    <div class="taskbar-icon" id="taskbar-search-icon" onclick="toggleSearchMenu(event)" onmouseenter="showTooltip(this, 'Search')">
+        <img src="https://i.imgur.com/2DDJj2G.png">
     </div>
     
     <!-- settings -->
@@ -1050,7 +1103,7 @@ const savedStoreData = localStorage.getItem("zeroOS_custom_store");
 let snapTimer = null;
     
 document.addEventListener("DOMContentLoaded", () => {
-    renderAutoDesktopApps();
+    AutoPinApps();
 });
 
 // this scary looking function takes care of searching for start menu and search menu
@@ -1104,8 +1157,9 @@ function applyFloatingStyles(el) {
 
 const storeApps = savedStoreData ? JSON.parse(savedStoreData) : {
     games: [
-      { name: "All Games", url: "http://greentidestack.github.io/allassets/fixedgnmath.html", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
-      { name: "Granny", url: "http://gn-math.github.io/html/90-fix2.html", image: "https://static.wikia.nocookie.net/granny/images/c/ce/App_icon_v1.3.2%2B.png/revision/latest?cb=20210320221242" },
+    //   { name: "All Games", url: "http://greentidestack.github.io/allassets/fixedgnmath.html", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
+      { name: "Granny", url: "https://app-259805.games.s3.yandex.net/259805/fadb3yakgje68vxwmy7a1khmb3vj9vxc_brotli/index.html?sdk=%2Fsdk%2F_%2Fv2.97c96d6acac215f69e1d.js#origin=https%3A%2F%2Fyandex.com&app-id=259805&device-type=desktop", image: "https://static.wikia.nocookie.net/granny/images/c/ce/App_icon_v1.3.2%2B.png/revision/latest?cb=20210320221242" },
+      { name: "Granny Chapter 2", url: "https://cdn.vietdp.com/file/vietdp-games/games/t52025/granny-horror-2/index.html", image: "https://play-lh.googleusercontent.com/X_9WQbosx62FK2V2BK1Tuh2f3FuwyhrznBBodZ6nxGphIC0PwU0YxTVDRpOhbVKquz4UzgZ4SbjwQhVYOvEGnA" },
       { name: "Fancade", url: "https://play.fancade.com", image: "https://www.fancade.com/images/fancade.jpg" },
       { name: "PolyTrack", url: "https://gaming-escape.github.io/public/assets/games/poly-track/index.html", image: "https://thaka.bing.com/th?id=OCGE.9n02lr0qrbm2_v3_main_webp&w=124&h=124&qlt=80&c=0&rs=1" },
       { name: "Roblox Player", url: "https://nowgg.fun/apps/a/19900/b.html", image: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.jpg" },
@@ -1116,6 +1170,7 @@ const storeApps = savedStoreData ? JSON.parse(savedStoreData) : {
       { name: "Tunnel Rush", url: "https://1kh0.github.io/projects/tunnel-rush/index.html", image: "https://images.hellokids.com/_uploads/_tiny_galerie/20180415/vign-tunnel-rush-hk-w8v_u89.jpg" },
       { name: "Tunnel Rush 2", url: "https://classroomlesson.github.io/basic-ruffle-player/html/tunnel_rush_2/index.html", image: "https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/9c5e0de489bb6f6f99e9bb0bce8341ac/tunnel-rush-2-logo.png" },
       { name: "Idle Breakout", url: "https://3kh0.bitbucket.io/projects/idle-breakout/index.html", image: "https://app.flamepass.com/assets/imgs/g/Idle_Breakout.webp" },
+      { name: "Can You Escape", url: "https://roomescapemaker.com/u/Andre/tutorial", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToapOX7-8xPxYuuP6pNIMd3jpE0lMW4Q2DfckIM3HHBQ&s" },
       { name: "Duck Life 3", url: "https://selenitebyplayer.artmuseum.org/resources/semag/ducklife3/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3em2qQpj_DxFl1HeNIZn8B-8mujTR59SFHQ&s" },
       { name: "Cluster Rush", url: "https://roblox-unblock.github.io/r8/cluster-rush/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp5XFGxVReP3-PW2bMDW-VkYdZpV95sLoEvw&s" },
       { name: "Hextris", url: "https://www.3kh0-assets.silvereen.net/3kh0-assets/hextris/", image: "https://play-lh.googleusercontent.com/nCzeX0WCpn8iLxQV9TgrWr6Xt4JZPT0nExE7iSC48KacKxtx_7c4dAYrlMYgTM_HtHg" },
@@ -1135,7 +1190,7 @@ const storeApps = savedStoreData ? JSON.parse(savedStoreData) : {
       { name: "Basketball Stars", url: "https://cbgamesdev.github.io/chilibowlflash/bstars/index.html", image: "https://realvcsa.jtlanguage.com/assets/img/basketballstars.webp" },
       { name: "Geometry Dash (better)", url: "https://web-dashers.github.io", image: "https://static.wikia.nocookie.net/logopedia/images/4/41/Geometry_Dash_Icon.svg/revision/latest?cb=20220220121501" },
       { name: "Geometry Dash Lite", url: "https://gaming-escape.github.io/public/assets/games/geometry-dash/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBms9b8YIAtSUbezumxG-dUppHEplVXpAlnA&s", },
-      { name: "Granny 3 Return the School", url: "https://st.8games.net/7/8g/igra-grenni-3-vozvrashchenie-v-shkolu/", image: "https://img.gamedistribution.com/ec2e7f9b7a9f441b92f19100627d94cc-512x384.jpg" },
+      { name: "Granny Return the School", url: "https://st.8games.net/7/8g/igra-grenni-3-vozvrashchenie-v-shkolu/", image: "https://img.gamedistribution.com/ec2e7f9b7a9f441b92f19100627d94cc-512x384.jpg" },
       { name: "Crossy Road", url: "https://gaming-escape.github.io/public/assets/games/crossy-road/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQR2Yhu6Qcf7NRF_jlPRlkmjIq5KhX0variQ&s", },
       { name: "Cookie Clicker", url: "https://a6936-19424025.cluster7.canvas-user-content.com/courses/6936~1014013/files/6936~19424025/course%20files/cookie%20clicker/index.html?download=1&inline=1", image: "https://play-lh.googleusercontent.com/Z1MOuuiD05ZN5LkVmMEvKF0mqAc-FknaQ2j8s4dZiO-LSPQX4EEA3RVJdlQEtxe96ok" },
       { name: "Basket Random", url: "https://roblox-unblock.github.io/r8/basket-random/", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0qj4H4c1nnfsygBxoQEbJkkUZ7yY_LkTnkA&s" },
@@ -1209,8 +1264,9 @@ const storeApps = savedStoreData ? JSON.parse(savedStoreData) : {
 };
 
 const Recommended = [
-  { name: "All Games", url: "http://greentidestack.github.io/allassets/fixedgnmath.html", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
-  { name: "Fancade", url: "https://play.fancade.com", image: "https://www.fancade.com/images/fancade.jpg" },
+//   { name: "All Games", url: "http://greentidestack.github.io/allassets/fixedgnmath.html", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
+    { name: "PolyTrack", url: "https://gaming-escape.github.io/public/assets/games/poly-track/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_nY95KC5COEgxNidWNH4dgurf_A8vrVMUKlhuC7BZbsMsN52eUIBWAhA&s=10" },
+  { name: "Granny", url: "https://app-259805.games.s3.yandex.net/259805/fadb3yakgje68vxwmy7a1khmb3vj9vxc_brotli/index.html?sdk=%2Fsdk%2F_%2Fv2.97c96d6acac215f69e1d.js#origin=https%3A%2F%2Fyandex.com&app-id=259805&device-type=desktop", image: "https://static.wikia.nocookie.net/granny/images/c/ce/App_icon_v1.3.2%2B.png/revision/latest?cb=20210320221242" },
 ];
 
 let startMenuOpen = false; 
@@ -1325,11 +1381,11 @@ finalRecommended.forEach(app => {
     
     let subtext = "Recently added";
         
-    if (app.name === "Fancade") { 
-        subtext = "Goated Game Library";
+    if (app.name === "Granny") { 
+        subtext = "Peak";
     } 
     else if (Recommended.some(s => s.name === app.name)) {
-        subtext = "Most Used";
+        subtext = "Popular";
     } 
     else {
         subtext = "Recently added";
@@ -1517,7 +1573,7 @@ function renderPinnedApps() {
     const isPinned = pinnedApps.some(app => app.name === appName);
     
     // Check if it's an auto desktop app
-    const isAutoApp = autoDesktopApps.some(app => app.name === appName);
+    const isAutoApp = AutoPinnedApps.some(app => app.name === appName);
     
     if (!isPinned && !isAutoApp) {
       icon.remove();
@@ -1620,8 +1676,8 @@ function setupSearchLogic() {
     const topAppsGrid = document.getElementById("top-apps-grid");
 
     const topApps = [
-    { name: "All Games", url: "http://greentidestack.github.io/allassets/fixedgnmath.html", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
-    { name: "PolyTrack", url: "https://gaming-escape.github.io/public/assets/games/poly-track/index.html", image: "https://gguardian213213.axsetubal.pt/images/games/polytrack-min.jpg" },
+    // { name: "All Games", url: "http://greentidestack.github.io/allassets/fixedgnmath.html", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
+    { name: "PolyTrack", url: "https://gaming-escape.github.io/public/assets/games/poly-track/index.html", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_nY95KC5COEgxNidWNH4dgurf_A8vrVMUKlhuC7BZbsMsN52eUIBWAhA&s=10" },
     { name: "Drive Mad", url: "https://www.swordslasher.com/games/drive-mad/game.html", image: "https://azgames.io/upload/imgs/drivemad.png" },
     { name: "VS Code", url: "https://greentidestack.github.io/ht.mlfork/index.html", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/960px-Visual_Studio_Code_1.35_icon.svg.png" },
     { name: "Browser", url: "https://greentidestack.github.io/flowbrowser/index.html", image: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Microsoft_Edge_logo_%282019%29.png" },
@@ -2011,9 +2067,6 @@ function openSettings() {
                 <button class="settings-section" onclick="loadSettings('cloaking', this)" style="width:100%; text-align:left; font-size:13px; margin-bottom:4px; padding: 8px 10px; border-radius: 5px; background: transparent; display: flex; align-items: center; gap: 12px; border: none; color: white; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;">
                     <img src="https://i.imgur.com/Drmj3By.png" style="width: 16px; height: 16px;"> Cloaking
                 </button>
-                <button class="settings-section" onclick="loadSettings('report', this)" style="width:100%; text-align:left; font-size:13px; margin-bottom:4px; padding: 8px 10px; border-radius: 5px; background: transparent; display: flex; align-items: center; gap: 12px; border: none; color: white; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;">
-                    <img src="https://i.imgur.com/gkN0dAu.png" style="width: 16px; height: 16px;"> Bug Reports & Suggestions
-                </button>
                 
             </div>
 
@@ -2043,7 +2096,7 @@ function loadSettings(type, btn) {
 
     content.innerHTML = `
         <h2 style="color:white;"><ion-icon name="brush-outline"></ion-icon> Personalization</h2>
-        <p style="color:gray; font-size:13px; margin-bottom:15px;">Customize Zero to your liking.</p>
+        <p style="color:gray; font-size:13px; margin-bottom:15px;">Customize ZeroOS a bit, don't forget to backup your settings in the System page!</p>
         <hr style="border:0; border-top:1px solid #444; margin:20px 0;">
         <h3>Wallpaper</h3>
         <div class="search-wrapper">
@@ -2120,9 +2173,12 @@ bgInput.addEventListener('keydown', function(event) {
 else if (type === 'credits') {
         content.innerHTML = `
             <h2 style="color:white;"><i class="fa-solid fa-hand-holding-heart" style="margin-right: 5px;"></i> Credits </h2><br>
+            <p style="color:gray; font-size:13px; margin-bottom:15px;">ZeroOS wouldn't be possible without these amazing people!</p>
             <hr style="border:0; border-top:1px solid #444; margin:20px 0;">
             <ul>
-              <li>Credits to gn-math and breadbb for the games in All Games</li>
+              <li><strong>You</strong> for enjoying and using the website!</li>
+              <br>
+              <li>Breadbb fix gn-math and i'll give credits back</li>
               <br>
               <li>Credits to Klash Development and GavinGoGaming for ideas from GlacierOS and for making Glacier</li>
               <br>
@@ -2134,15 +2190,10 @@ else if (type === 'credits') {
               <br>
               <li>Credits to Ionic for Ionicons icons</li>
               <br>
-              <li>Obviously credits to Microsoft for icons and Windows 11</li>
+              <li>Credits to FontAwesome for more icons</li>
+              <br>
+              <li>A few credits to Microslop for icons and Windows 11</li>
             </ul>
-            
-        `;
-    }
-
-    else if (type === 'report') {
-        content.innerHTML = `
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfiKDL7sS6xjn6nMEOAh3j9phR5rRRCtiO5yNWeqYU6JdPvSQ/viewform?embedded=true" width="550" height="814" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
             
         `;
     }
@@ -2150,15 +2201,29 @@ else if (type === 'credits') {
     else if (type === 'cloaking') {
     content.innerHTML = `
         <h2 style="color:white;"><ion-icon name="shield-checkmark-outline" style="margin-right: 5px; width: 30px; height: 30px;"></ion-icon> Cloaking</h2><br>
-        <p style="color:gray; font-size:13px; margin-bottom:15px;">Use these tools to disguise your tab as Finite Campus, prevent teachers from seeing your screen on NoGuardian, and block tab from being closed (more info at the setting).</p>
+        <p style="color:gray; font-size:13px; margin-bottom:15px;">Disguise the tab when on another site, launch in about:blank or blob: to stop (most) blockers monitoring your screen, and stop GoGuardian Scene mode</p>
         
+        <h3 style="color: white;">Launchers</h3>
+        <br>
         <div onclick="AboutBlank()" class="settingscloak-btn">
             Launch about:blank Cloak <ion-icon name="open-outline" style="margin-left: 8px; vertical-align: middle;"></ion-icon>
         </div>
-        
-        <div class="settingscloak-btn2" onclick="tabCloak()">
-            Infinite Campus Tab Cloak <ion-icon name="pencil-outline" style="margin-left: 8px; vertical-align: middle;"></ion-icon>
+        <div onclick="createBlobUrl()" class="settingscloak-btn-blob">
+            Launch in blob: URL <ion-icon name="open-outline" style="margin-left: 8px; vertical-align: middle;"></ion-icon>
         </div>
+        <hr style="border: 0; border-top: 1px solid #444; margin: 20px 0;">
+        <h3 style="color: white">Tab Cloaks</h3>
+        <br>
+        <button id="Campus" class="favicon"><img src="https://oakgroveca.infinitecampus.org/campus/nav-wrapper/assets/icons/favicon-32x32.png" alt="Infinite Campus" title="Infinite Campus"></button>
+        <button id="Google" class="favicon"><img src="https://www.google.com/favicon.ico" alt="Google" title="Google"></button>
+     <button id="Google Drive" class="favicon"><img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png" alt="Google Drive" title="Google Drive"></button>
+     <button id="Google Docs" class="favicon"><img src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x64.png" alt="Google Docs" title="Google Docs"></button>
+     <button id="Google Slides" class="favicon"><img src="https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_presentation_x64.png" alt="Google Slides" title="Google Slides"></button>
+     <button id="Google Classroom" class="favicon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Google_Classroom_Logo.svg/960px-Google_Classroom_Logo.svg.png" alt="Google Classroom" title="Google Classroom"></button>
+     <button id="Khan Academy" class="favicon"><img src="https://www.khanacademy.org/favicon.ico" alt="Khan Academy" title="Khan Academy"></button>
+     <button id="Powerschool" class="favicon"><img src="https://www.svgrepo.com/show/518618/powerschool.svg" alt="Powerschool" title="Powerschool"></button>
+     <button id="IXL" class="favicon"><img src="https://www.ixl.com/favicon.ico" alt="IXL" title="IXL"></button>
+
         
         <hr style="border:0; border-top:1px solid #444; margin: 20px 0;">
         
@@ -2177,6 +2242,119 @@ else if (type === 'credits') {
             </div>
         </label>
     `;
+
+    // Save tab name to localStorage
+     function changeTabName() {
+     var tabName = document.getElementById("tabName").value;
+     document.title = tabName;
+     localStorage.setItem("tabName", tabName);
+     }
+
+     // Save tab icon to localStorage
+     function changeTabIcon() {
+     var tabIcon = document.getElementById("tabIcon").value;
+     changeTabFavicon(tabIcon);
+     localStorage.setItem("tabIcon", tabIcon);
+     }
+     
+     // Change tab favicon
+     function changeTabFavicon(iconUrl) {
+     var link = document.querySelector("link[rel~='icon']");
+     if (!link) {
+     link = document.createElement('link');
+     link.rel = 'icon';
+     document.getElementsByTagName('head')[0].appendChild(link);
+     }
+     link.href = iconUrl;
+     localStorage.setItem("tabIcon", iconUrl);
+     }
+
+     // Load tab name and icon from localStorage
+     window.onload = function() {
+     var savedTabName = localStorage.getItem("tabName");
+     var savedTabIcon = localStorage.getItem("tabIcon");
+     if (savedTabName) {
+     document.title = savedTabName;
+     }
+     if (savedTabIcon) {
+     changeTabFavicon(savedTabIcon);
+        }
+     }
+
+document.getElementById("Campus").onclick = function () {
+    var tabTitle = "Student Profile | Home | Infinite Campus";
+     var tabIcon = "https://oakgroveca.infinitecampus.org/campus/nav-wrapper/assets/icons/favicon-32x32.png";
+     document.title = tabTitle;
+     changeTabFavicon(tabIcon);
+     localStorage.setItem("tabName", tabTitle);
+     localStorage.setItem("tabIcon", tabIcon);
+}
+
+document.getElementById("Google").onclick = function() {
+     var tabTitle = "Google";
+     var tabIcon = "https://www.google.com/favicon.ico";
+     document.title = tabTitle;
+     changeTabFavicon(tabIcon);
+     localStorage.setItem("tabName", tabTitle);
+     localStorage.setItem("tabIcon", tabIcon);
+     };
+                            
+     document.getElementById("Google Drive").onclick = function() {
+     var tabTitle = "My Drive - Google Drive";
+     var tabIcon = "https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png";
+     document.title = tabTitle;
+     changeTabFavicon(tabIcon);
+     localStorage.setItem("tabName", tabTitle);
+     localStorage.setItem("tabIcon", tabIcon);
+     };
+     
+     document.getElementById("Google Docs").onclick = function() {
+     var tabTitle = "Untitled document - Google Docs";
+     var tabIcon = "https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_document_x64.png";
+     document.title = tabTitle;
+     changeTabFavicon(tabIcon);
+     localStorage.setItem("tabName", tabTitle);
+     localStorage.setItem("tabIcon", tabIcon);
+     };
+      
+     document.getElementById("Google Slides").onclick = function() {
+     var tabTitle = "Untitled presentation - Google Slides";
+     var tabIcon = "https://ssl.gstatic.com/docs/doclist/images/mediatype/icon_1_presentation_x64.png";
+     document.title = tabTitle;
+     changeTabFavicon(tabIcon);
+     localStorage.setItem("tabName", tabTitle);
+     localStorage.setItem("tabIcon", tabIcon);
+     };
+     
+     document.getElementById("Google Classroom").onclick = function() {
+     var tabTitle = "Home";
+     var tabIcon = "https://ssl.gstatic.com/classroom/favicon.png";
+     document.title = tabTitle;
+     changeTabFavicon(tabIcon);
+     localStorage.setItem("tabName", tabTitle);
+     localStorage.setItem("tabIcon", tabIcon);
+     };
+
+document.getElementById("Powerschool").onclick = function () {
+  document.title = "PowerSchool K-12 Software & Cloud-Based Solutions";
+  changeTabFavicon("https://www.powerschool.com/favicon.ico");
+  localStorage.setItem("tabName", "PowerSchool K-12 Software & Cloud-Based Solutions");
+  localStorage.setItem("tabIcon", "https://www.powerschool.com/favicon.ico");
+};
+document.getElementById("Khan Academy").onclick = function () {
+  document.title = "Khan Academy | Free Online Courses, Lessons & Practice";
+  changeTabFavicon('https://www.khanacademy.org/favicon.ico');
+  localStorage.setItem("tabName", "Khan Academy | Free Online Courses, Lessons & Practice");
+  localStorage.setItem('tabIcon', 'https://www.khanacademy.org/favicon.ico');
+};
+document.getElementById("IXL").onclick = function () {
+  document.title = "IXL | Math, Language Arts, Science, Social Studies, and Spanish";
+  changeTabFavicon("https://www.ixl.com/favicon.ico");
+  localStorage.setItem("tabName", "IXL | Math, Language Arts, Science, Social Studies, and Spanish");
+  localStorage.setItem("tabIcon", "https://www.ixl.com/favicon.ico");
+};
+
+
 }
 
     else if (type === 'system') {
@@ -2319,7 +2497,18 @@ document.addEventListener('mousedown', (e) => {
                     <div class="modal-input-group"><input style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;" type="text" id="add-name" placeholder="App Name" autocomplete="off"></div>
                     <div class="modal-input-group"><input style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;" type="text" id="add-url" placeholder="App URL (include https)" autocomplete="off"></div>
                     <div class="modal-input-group"><input style="cursor: url(https://i.imgur.com/p4Uu7rZ.png), default!important;" type="text" id="add-img" placeholder="Image URL" autocomplete="off"></div>
-                    <button onclick="CustomAppManager.save('${category}')" 
+                    
+                <h6 style="color: white; font-weight: bold; text-align: center; justify-content: center; align-items: center;">note: not all websites will load!
+                    <div class="info-wrapper">
+                        <span onclick="toggleInfo(event)" style="cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important; opacity:0.6; font-size:18px;">&#x1F6C8;</span>
+                        <div id="info-popup" style="display:none; position:absolute; bottom:40%; right:50%; width:250px; background:#333; border:1px solid #0078D4; padding:10px; border-radius:8px; font-size:12px; z-index:100; box-shadow:0 4px 15px rgba(0,0,0,0.5); text-align: center; justify-content: center; align-items: center; font-weight: 6px;">
+                            <strong  style="color: #0078D4;">Why do some sites not load?</strong><br>
+                            Many sites don't allow other sites to show that site inside another site. Some websites may not load if you are on a WiFi network managed by your school, or your school may have personally blocked a site inside Chrome settings. In any case, you can use an alternative link, change your WiFi or simply try again later.
+                        </div>
+                    </div>
+                </h6>
+
+                <button onclick="CustomAppManager.save('${category}')" 
                         class="customcardbtn">
                         <i class="fa-solid fa-cart-plus" style="margin-right: 5px;"></i>
                         Add to Store
@@ -2508,6 +2697,19 @@ function AboutBlank() {
         return;
     }
 
+     // blob cloak
+     function createBlobUrl() {
+     var outerHTML = document.documentElement.outerHTML;
+     var blob = new Blob([outerHTML], {
+     type: 'text/html'
+     });
+     var blobUrl = URL.createObjectURL(blob);
+     var newTab = window.open();
+     newTab.document.write('<!DOCTYPE html><html><head><title>Page Content</title></head><body></body></html>');
+     newTab.document.close();
+     newTab.location.href = blobUrl;
+     }
+
     win.document.title = "zeroOS";
 
     var iframe = win.document.createElement('iframe');
@@ -2527,16 +2729,6 @@ function AboutBlank() {
 
     window.location.replace('https://classroom.google.com');
 }
-
-
-function tabCloak() {
-     var tabTitle = "Student Profile | Home | Infinite Campus";
-     var tabIcon = "https://oakgroveca.infinitecampus.org/campus/nav-wrapper/assets/icons/favicon-32x32.png";
-     document.title = tabTitle;
-     changeTabFavicon(tabIcon);
-     localStorage.setItem("tabName", tabTitle);
-     localStorage.setItem("tabIcon", tabIcon);
-};
 
 /* =========================================
    personalize section in the context menu
@@ -2630,9 +2822,6 @@ function tabCloak() {
                 </button>
                 <button class="settings-section" onclick="loadSettings('cloaking', this)" style="width:100%; text-align:left; font-size:13px; margin-bottom:4px; padding: 8px 10px; border-radius: 5px; background: transparent; display: flex; align-items: center; gap: 12px; border: none; color: white; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;">
                     <img src="https://i.imgur.com/Drmj3By.png" style="width: 16px; height: 16px;"> Cloaking
-                </button>
-                <button class="settings-section" onclick="loadSettings('report', this)" style="width:100%; text-align:left; font-size:13px; margin-bottom:4px; padding: 8px 10px; border-radius: 5px; background: transparent; display: flex; align-items: center; gap: 12px; border: none; color: white; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;">
-                    <img src="https://i.imgur.com/gkN0dAu.png" style="width: 16px; height: 16px;"> Bug Reports & Suggestions
                 </button>
                 
             </div>
@@ -2737,9 +2926,6 @@ function OpenCloaking() {
                 </button>
                 <button class="settings-section" onclick="loadSettings('cloaking', this)" style="width:100%; text-align:left; font-size:13px; margin-bottom:4px; padding: 8px 10px; border-radius: 5px; background: transparent; display: flex; align-items: center; gap: 12px; border: none; color: white; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;">
                     <img src="https://i.imgur.com/Drmj3By.png" style="width: 16px; height: 16px;"> Cloaking
-                </button>
-                <button class="settings-section" onclick="loadSettings('report', this)" style="width:100%; text-align:left; font-size:13px; margin-bottom:4px; padding: 8px 10px; border-radius: 5px; background: transparent; display: flex; align-items: center; gap: 12px; border: none; color: white; cursor: url(https://i.imgur.com/Kp1oxMB.png), pointer!important;">
-                    <img src="https://i.imgur.com/gkN0dAu.png" style="width: 16px; height: 16px;"> Bug Reports & Suggestions
                 </button>
                 
             </div>
@@ -3695,16 +3881,14 @@ class FileExplorer {
     }
 }
 
-const autoDesktopApps = [
-    { name: "VS Code", url: "https://greentidestack.github.io/ht.mlfork/index.html", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/960px-Visual_Studio_Code_1.35_icon.svg.png" },
-    { name: "Settings", url: "#", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Windows_Settings_icon.svg/960px-Windows_Settings_icon.svg.png" },
-    { name: "gn-math", url: "http://greentidestack.github.io/allassets/fixedgnmath.html", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
+const AutoPinnedApps = [
+    // { name: "gn-math", url: "http://greentidestack.github.io/allassets/fixedgnmath.html", image: "https://lh3.googleusercontent.com/Mxl8996vzcWWRU5RyKdTDA76GEPj9jQpuYc02nPgtwKgdqpWidM5YVqu8DHBd-D1sZ3sP1AOYB-DlNhMEpaLJxQcTQ=s128-rj-sc0x00ffffff" },
 ];
 
-function renderAutoDesktopApps() {
+function AutoPinApps() {
     const desktop = document.getElementById("desktop");
     
-    autoDesktopApps.forEach(app => {
+    AutoPinnedApps.forEach(app => {
         // Check if already exists
         if (document.querySelector(`[data-app="${app.name}"]`)) return;
 
@@ -3730,75 +3914,8 @@ function renderAutoDesktopApps() {
     });
 }
 
-
-//panic key
-let panicKey = localStorage.getItem('panicKey') || ']';
-        let panicURL = localStorage.getItem('panicURL') || 'https://google.com';
-        let panicKeyActive = true;
-        
-        document.getElementById('current-panic-key').textContent = panicKey;
-        document.getElementById('panic-url').value = panicURL;
-        
-        const changePanicKeyBtn = document.getElementById('change-panic-key-btn');
-        const listeningStatus = document.getElementById('listening-status');
-        
-        changePanicKeyBtn.addEventListener('click', function() {
-            listeningStatus.textContent = "Listening for key press...";
-            
-            const keyListener = function(e) {
-                panicKey = e.key;
-                document.getElementById('current-panic-key').textContent = panicKey;
-                listeningStatus.textContent = "Key set successfully!";
-                
-                document.removeEventListener('keydown', keyListener);
-                
-                setTimeout(() => {
-                    listeningStatus.textContent = "";
-                }, 2000);
-            };
-            
-            document.addEventListener('keydown', keyListener);
-        });
-        
-        function savePanicSettings() {
-            panicURL = document.getElementById('panic-url').value;
-            
-            if (panicURL && !panicURL.startsWith('http://') && !panicURL.startsWith('https://')) {
-                panicURL = 'https://' + panicURL;
-                document.getElementById('panic-url').value = panicURL;
-            }
-            
-            localStorage.setItem('panicKey', panicKey);
-            localStorage.setItem('panicURL', panicURL);
-            
-            const panicStatus = document.getElementById('panic-status');
-            panicStatus.textContent = "Settings saved successfully!";
-            
-            setTimeout(() => {
-                panicStatus.textContent = "Panic key is active";
-            }, 2000);
-        }
-        
-        document.addEventListener('keydown', function(e) {
-            if (panicKeyActive && e.key === panicKey) {
-                window.location.href = panicURL;
-            }
-        });
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            if (localStorage.getItem('panicKey')) {
-                panicKey = localStorage.getItem('panicKey');
-                document.getElementById('current-panic-key').textContent = panicKey;
-            }
-            
-            if (localStorage.getItem('panicURL')) {
-                panicURL = localStorage.getItem('panicURL');
-                document.getElementById('panic-url').value = panicURL;
-            }
-        });
-
 renderPinnedApps(); // this has to always be at the bottom or else js breaks
-renderAutoDesktopApps(); // this as well
+AutoPinApps(); // this as well
 </script>
 
 
@@ -3807,3 +3924,4 @@ renderAutoDesktopApps(); // this as well
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>   
+
